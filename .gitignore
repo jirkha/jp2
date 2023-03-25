@@ -1,0 +1,10 @@
+client_secrets.json
+client_secrets
+
+.env
+*.pyc
+*.pyo
+__pycache__/
+
+db.sqlite3
+env/
