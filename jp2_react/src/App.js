@@ -5,10 +5,10 @@ import {
   Route,
   //useParams
 } from "react-router-dom";
-//import Login from "./components/Global/Login/Login";
-// import LoginButton from "./components/Global/Login/LoginButton"
-// import LogoutButton from "./components/Global/Login/LogoutButton";
-//import { useAuth0 } from "@auth0/auth0-react";
+import Login from "./components/Global/Login/Login";
+import LoginButton from "./components/Global/Login/LoginButton"
+import LogoutButton from "./components/Global/Login/LogoutButton";
+import { useAuth0 } from "@auth0/auth0-react";
 import { Container, Typography, IconButton, Link } from "@mui/material";
 import { ConfirmProvider } from "material-ui-confirm"; //umožňuje přidat potvrzovací okna
 import logo from "../src/assets/JP_logo_black.png"
@@ -34,32 +34,32 @@ import AboutMePage from "./pages/AboutMePage";
 
 function App() {
 
-// const { isAuthenticated, isLoading } = useAuth0();
+const { isAuthenticated, isLoading } = useAuth0();
 
-//   if (isLoading) {
-//     return (
-//       <div>
-//         {" "}
-//         <NavbarJP />
-//       </div>
-//     );
-//   }
+  if (isLoading) {
+    return (
+      <div>
+        {" "}
+        <NavbarJP />
+      </div>
+    );
+  }
 
-  // if (!isAuthenticated) {
-  //   return (
-  //     <div>
-  //       <img src={logo} width="270" height="65" alt="Logo" />
-  //       <Typography variant="h4" color="primary" sx={{ mt: 2, mb: 2 }}>
-  //         Pro pokračování se prosím přihlašte
-  //       </Typography>
-  //       <LoginButton />
-  //     </div>
-  //   );
-  // }
+  if (!isAuthenticated) {
+    return (
+      <div>
+        <img src={logo} width="270" height="65" alt="Logo" />
+        <Typography variant="h4" color="primary" sx={{ mt: 2, mb: 2 }}>
+          Pro pokračování se prosím přihlašte
+        </Typography>
+        <LoginButton />
+      </div>
+    );
+  }
 
   return (
     <>
-      {/* {isAuthenticated && ( */}
+      {isAuthenticated && (
         <ConfirmProvider>
           {/* <Router> */}
           {/* <main className="py-3"> */}
@@ -104,7 +104,7 @@ function App() {
           <Footer />
           {/* </Router> */}
         </ConfirmProvider>
-      {/* )}{" "} */}
+       )}{" "}
     </>
   );
 }

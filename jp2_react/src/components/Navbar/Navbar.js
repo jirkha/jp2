@@ -100,9 +100,9 @@ export default function NavbarJP() {
               <MenuIcon />
             </IconButton>
           </Box>
-          {/* <Box sx={{ maxWidth: 3, display: { xs: "none", md: "inline" } }}>
+          <Box sx={{ maxWidth: 3, display: { xs: "none", md: "inline" } }}>
             <LogoutButton />
-          </Box> */}
+          </Box>
         </Toolbar>
       </Container>
 
