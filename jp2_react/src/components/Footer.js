@@ -16,25 +16,29 @@ const Footer = () => {
         <Typography variant="h5" color="primary">
           © Jiří Vecko
         </Typography>
-        <a href="https://www.jirivecko.cz">
-          <Typography variant="h6">www.jirivecko.cz</Typography>
-        </a>
-        <Box
-          component="img"
-          src={jirivecko}
-          sx={{ width: "4%", minWidth: 55 }}
-          //sx={{ width: "180px", height: "45px" }}
-          alt="Logo"
-        />
+        <Box sx={{ display: { xs: "none", md: "block" } }}>
+          <a href="https://www.jirivecko.cz">
+            <Typography variant="h6">www.jirivecko.cz</Typography>
+          </a>
+        </Box>
 
-        <a href="https://www.jpcandles.cz">
+        <a href="https://www.jirivecko.cz">
           {" "}
           <Box
             component="img"
+            src={jirivecko}
+            //sx={{ width: "4%", minWidth: 55 }}
+            sx={{ p: 2}}
+            width="55px"
+            alt="Logo"
+          />
+        </a>
+
+        <a href="https://www.jpcandles.cz">
+          <Box
+            component="img"
             src={logo}
-            sx={{ width: "180px", height: "45px" }}
-            width="50"
-            height="25"
+            height="55px"
             alt="Logo"
           />
         </a>
