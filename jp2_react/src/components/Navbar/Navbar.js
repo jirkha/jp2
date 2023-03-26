@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Button, Link } from "@mui/material";
+import { Button, Link, Stack } from "@mui/material";
 // import makeStyles from "@mui/styles/makeStyles";
 import { AppBar } from "@mui/material";
 import { Toolbar } from "@mui/material";
@@ -15,14 +15,9 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { List } from "@mui/material";
 import { ListItem } from "@mui/material";
 import logo from "../../assets/JP_logo_white_small.png";
-import { Grid } from "@mui/material";
-import { Tabs } from "@mui/material";
-import { Tab } from "@mui/material";
 import LogoutButton from "../Global/Login/LogoutButton";
 
 const navigationLinks = [
-  // { name: "T1", href: "/testpage" },
-  // { name: "T2", href: "/testpage2" },
   { name: "Materiál", href: "/material" },
   { name: "Sklad", href: "/stock" },
   { name: "Prodejní kanály", href: "/sale" },
@@ -39,7 +34,13 @@ export default function NavbarJP() {
   return (
     <AppBar position="sticky">
       <Container maxWidth="lg">
-        <Toolbar disableGutters>
+        {/* <Toolbar disableGutters> */}
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          spacing={2}
+        >
           <IconButton
             //size="large"
             edge="start"
@@ -48,53 +49,58 @@ export default function NavbarJP() {
             sx={{ mr: 2 }}
           >
             <Link href="/">
-              <img src={logo} 
-              width="100" 
-              //height="35" 
-              alt="Logo" />
+              <img
+                src={logo}
+                width="100"
+                //height="35"
+                alt="Logo"
+              />
             </Link>
           </IconButton>
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <Grid container>
-              <Grid item xs={12}>
-                {navigationLinks.map((item) => (
-                  <Link
-                    //className={styles.link}
-                    //indicatorColor="secondary"
-                    component="button"
-                    key={item.name}
-                    sx={
-                      item.href === pathname.pathname
-                        ? {
-                            marginRight: 2,
-                            //backgroundColor: "primary.light",
-                            border: 2, //bílé okraje
-                            borderRadius: "5px", //zaoblení
-                            p: 1, // odsazení okraje od obsahu
-                            fontWeight: "bold", //tloušťka písma
-                            fontSize: 15, // velikost textu
-                          }
-                        : {
-                            marginRight: 2,
-                          }
-                    }
-                    //color="inherit"
-                    variant="button"
-                    underline="hover"
-                    href={item.href}
-                    label={item.name}
-                    onClick={() => navigate(item.href)}
-                    color={
-                      item.href === pathname.pathname ? "inherit" : "inherit"
-                    }
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-              </Grid>
-            </Grid>
+            <Stack
+              direction="row"
+              justifyContent="space-between"
+              alignItems="center"
+              spacing={4}
+            >
+              {navigationLinks.map((item) => (
+                <Link
+                  //className={styles.link}
+                  //indicatorColor="secondary"
+                  component="button"
+                  key={item.name}
+                  sx={
+                    item.href === pathname.pathname
+                      ? {
+                          marginRight: 2,
+                          //backgroundColor: "primary.light",
+                          border: 2, //bílé okraje
+                          borderRadius: "5px", //zaoblení
+                          p: 1, // odsazení okraje od obsahu
+                          fontWeight: "bold", //tloušťka písma
+                          fontSize: 15, // velikost textu
+                        }
+                      : {
+                          marginRight: 2,
+                        }
+                  }
+                  //color="inherit"
+                  variant="button"
+                  underline="hover"
+                  href={item.href}
+                  label={item.name}
+                  onClick={() => navigate(item.href)}
+                  color={
+                    item.href === pathname.pathname ? "inherit" : "inherit"
+                  }
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </Stack>
           </Box>
-        
+
           <Box sx={{ display: { xs: "block", md: "none" } }}>
             <IconButton color="inherit" onClick={() => setOpen(true)}>
               <MenuIcon />
@@ -103,7 +109,8 @@ export default function NavbarJP() {
           {/* <Box sx={{ maxWidth: 3, display: { xs: "none", md: "inline" } }}>
             <LogoutButton />
           </Box> */}
-        </Toolbar>
+        </Stack>
+        {/* </Toolbar> */}
       </Container>
 
       <SwipeableDrawer
@@ -140,7 +147,6 @@ export default function NavbarJP() {
               </Link>
             </ListItem>
           ))}
-        
         </List>
       </SwipeableDrawer>
     </AppBar>
