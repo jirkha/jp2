@@ -9,13 +9,13 @@ export default function Home() {
       <Typography
         variant="h2"
         color="primary"
-        sx={{ mt: 10, mb:5 }}
+        sx={{ p: 3, pt: 6 }}
         //align="center" //zarovná doprostřed
         gutterBottom //vytvoří mezeru pod textem
       >
         <strong>Podnikový systém</strong>
       </Typography>
-      <Typography color="primary" variant="h3" sx={{ mb:7 }}>
+      <Typography color="primary" variant="h3" sx={{ p: 3 }}>
         Tato webová aplikace je určena výhradně pro J&P Candles.
       </Typography>
       <Stack
@@ -23,6 +23,7 @@ export default function Home() {
         spacing={{ xs: 1, sm: 2, md: 6 }}
         sx={{ mt: 3 }}
         justifyContent="space-between"
+        alignItems="center"
       >
         <Box
           height="100%"

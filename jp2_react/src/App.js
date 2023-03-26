@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   //HashRouter as Router,
   Routes,
@@ -11,20 +11,16 @@ import LogoutButton from "./components/Global/Login/LogoutButton";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Container, Typography, IconButton, Link } from "@mui/material";
 import { ConfirmProvider } from "material-ui-confirm"; //umožňuje přidat potvrzovací okna
-import logo from "../src/assets/JP_logo_black.png"
-
+import logo from "../src/assets/JP_logo_black.png";
 import "./";
 import ListMaterialPage from "./pages/ListMaterialPage";
 import MaterialPage from "./pages/MaterialPage";
 import StockPage from "./pages/StockPage";
-import TestPage_old from "./pages/TestPage_old";
-import { TestPage } from "./pages/TestPage";
 import ListProductPage from "./pages/ListProductPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import SalesStatisticPage from "./pages/SalesStatisticPage";
 
 import NavbarJP from "./components/Navbar/Navbar";
-import AddItemForm from "./components/Material/AddItemForm";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import ListTransactionPage from "./pages/ListTransactionPage";
@@ -63,13 +59,10 @@ const { isAuthenticated, isLoading } = useAuth0();
         <ConfirmProvider>
           {/* <Router> */}
           {/* <main className="py-3"> */}
-          <Container>
             <NavbarJP />
             <Routes>
               <Route path="/" element={<Home />}></Route>
               <Route path="/material" element={<ListMaterialPage />}></Route>
-              <Route path="/testpage" element={<TestPage />}></Route>
-              <Route path="/testpage2" element={<TestPage_old />}></Route>
               <Route
                 path="/material/:materialId"
                 element={<MaterialPage />}
@@ -98,7 +91,6 @@ const { isAuthenticated, isLoading } = useAuth0();
                 element={<AboutMePage />}
               ></Route>
             </Routes>
-          </Container>
           {/* </main> */}
 
           <Footer />
