@@ -8,6 +8,12 @@ https://docs.djangoproject.com/en/4.1/howto/deployment/wsgi/
 """
 
 import os
+from decouple import config
+import psycopg2
+
+DATABASE_URL = config('DATABASE_URL')
+
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 from django.core.wsgi import get_wsgi_application
 from whitenoise.base import WhiteNoise
