@@ -2,12 +2,14 @@ import React from 'react'
 import TableItem from '../components/Material/TableItem'
 import { Container, Typography, Stack } from "@mui/material";
 import ItemTypesList from '../components/Material/ItemTypesList';
+import TestApi from '../components/Global/TestApi';
 
 
 function ListMaterialPage() {
 
   return (
     <div>
+      <TestApi/>
       <Container component="section" id="itemList">
         {/* <HeaderPage> */}
         <Typography
