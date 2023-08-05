@@ -16,9 +16,9 @@ class ItemType(models.Model):  # typ materiálu
 
 
 class Item(models.Model):  # položka (součást) produktu
-    
+
     name = models.CharField(max_length=256, blank=False)  # název položky
-    ### typ suroviny (položky) 
+    ### typ suroviny (položky)
     type = models.ForeignKey(
         ItemType, related_name="types", on_delete=models.RESTRICT)
     ### měrná jednotka (výběr z možností)
@@ -45,22 +45,23 @@ class Item(models.Model):  # položka (součást) produktu
     note = models.TextField(blank=True)  # poznámka
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
-    
+
     def __str__(self):
         # return f"NÁZEV PRODUKTU: {self.name}, DRUH ZBOŽÍ: {self.type}"
         return f"{self.name} ({self.type})"
 
-    
-    
+
 class ItemPart(models.Model):
-    item = models.ForeignKey(Item, related_name="item_parts", on_delete=models.CASCADE)
-    quantity = models.DecimalField(max_digits=7, decimal_places=2, default=1.00)
+    item = models.ForeignKey(
+        Item, related_name="item_parts", on_delete=models.CASCADE)
+    quantity = models.DecimalField(
+        max_digits=7, decimal_places=2, default=1.00)
     created = models.DateTimeField(auto_now_add=True)
-    
+
     def __str__(self):
         return f"{self.item.name} ({self.quantity})"
-    
-    
+
+
 # class Material(models.Model):  # skladový materiál
 #     # název suroviny (vosk sójový XYZ apod.)
 #     name = models.CharField(max_length=256)
@@ -93,7 +94,7 @@ class Storage(models.Model):  # naskladnění materiálu do skladu
 
     def __str__(self):
         return f"{self.day_of_storage} - storage of {self.item}"
-    
+
     ### automaticky počítá celkovou nákupní cenu daného naskladnění
     # def save(self, *args, **kwargs):
     #     print("item: ", self.item)
@@ -110,7 +111,8 @@ class Removal(models.Model):  # vyskladnění materiálu ze skladu
     #     ItemType, related_name="item_types_r", on_delete=models.CASCADE, default=None)  # typ vyskladněného materiálu
     item = models.ForeignKey(
         Item, related_name="items_r", on_delete=models.CASCADE, default=None)  # vyskladněný materiál
-    quantity_of_material = models.PositiveIntegerField()  # množství vyskladněného materiálu
+    # množství vyskladněného materiálu
+    quantity_of_material = models.PositiveIntegerField()
     # celková cena vyskladněného materiálu, tzn. o kolik se snižuje celková cena uskladněného materiálu (počítá se automaticky)
     price = models.IntegerField(blank=True, default=0)
     note = models.TextField(blank=True, default=None)  # poznámka
@@ -120,7 +122,6 @@ class Removal(models.Model):  # vyskladnění materiálu ze skladu
 
     def __str__(self):
         return f"{self.material}"
-    
 
 
 ### PRODUKTY ###
@@ -131,7 +132,7 @@ class ProductType(models.Model):  # typ produktu
     # automaticky doplní čas přidání typu produktu
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
-    
+
     class Meta:
         ordering = ["name"]
 
@@ -141,6 +142,7 @@ class ProductType(models.Model):  # typ produktu
 
 def upload_to(instance, filename):
     return 'images/{filename}'.format(filename=filename)
+
 
 class Product(models.Model):  # prudukt (výrobek k prodeji)
     name = models.CharField(max_length=256)  # název produktu
@@ -152,7 +154,7 @@ class Product(models.Model):  # prudukt (výrobek k prodeji)
         ItemPart, related_name="product_items", blank=True)
     # fotografie produktu
     image = models.ImageField(
-        upload_to="post_images", 
+        upload_to="post_images",
         null=True, blank=True, default=None)
     # výrobní náklady, které se spočítají automaticky na základě položek "items"
     costs = models.PositiveIntegerField(default=0)

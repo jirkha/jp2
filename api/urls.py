@@ -11,24 +11,29 @@ urlpatterns = [
          ItemTypeView.as_view(), name='item_types'),
     path('items/',
          ItemView.as_view(), name='items'),
-    
+
     path('item_detail/<str:pk>/', views.item_detail, name='item_detail'),
-    
+
     path('itemType_add/', views.itemType_add, name='itemType_add'),
     path('item_add/', views.item_add, name='item_add'),
-    
+
     path('item_update/<str:pk>/',
          views.item_update, name='item_update'),
     path('itemType_update/<str:pk>/',
          views.itemType_update, name='itemType_update'),
-        
+
     path('item_delete/<str:pk>/', views.item_delete, name='item_delete'),
     path('itemType_delete/<str:pk>',
          views.itemType_delete, name='itemType_delete'),
     path('item_image_patch/<str:pk>',
          views.item_image_patch, name='item_image_patch'),
+<<<<<<< HEAD
     
     
+=======
+
+
+>>>>>>> changes
     path('list_storage/', views.list_storage, name='list_storage'),
     path('list_removal/', views.list_removal, name='list_removal'),
     path('storage_add/', views.storage_add, name='storage_add'),
@@ -38,28 +43,28 @@ urlpatterns = [
 
     path('posts/', views.ProductView.as_view(), name='posts_list'),
     path('posts/<str:pk>/', views.ProductView.as_view(), name='posts_list'),
-     
+
     path('productType_add/', views.productType_add, name='productType_add'),
-#     path('product_add/', views.product_add, name='product_add'),
+    #     path('product_add/', views.product_add, name='product_add'),
     path('saleType_add/', views.saleType_add, name='saleType_add'),
     path('sale_add/', views.sale_add, name='sale_add'),
     path('transaction_add/', views.transaction_add, name='transaction_add'),
-    
+
     path('list_productType/', views.list_productType, name='list_productType'),
     path('list_product/', views.list_product, name='list_product'),
     path('list_saleType/', views.list_saleType, name='list_saleType'),
     path('list_sale/', views.list_sale, name='list_sale'),
     path('list_transaction/', views.list_transaction, name='list_transaction'),
-    
+
     path('product_detail/<str:pk>/',
          views.product_detail, name='product_detail'),
     path('sale_detail/<str:pk>/',
          views.sale_detail, name='sale_detail'),
     path('transaction_detail/<str:pk>/',
          views.transaction_detail, name='transaction_detail'),
-    
-#     path('product_update/<str:pk>/',
-#          views.product_update, name='product_update'),
+
+    #     path('product_update/<str:pk>/',
+    #          views.product_update, name='product_update'),
     path('productType_update/<str:pk>/',
          views.productType_update, name='productType_update'),
     path('product_item_patch/<str:pk>',
@@ -74,7 +79,7 @@ urlpatterns = [
          views.saleType_update, name='saleType_update'),
     path('transaction_update/<str:pk>/',
          views.transaction_update, name='transaction_update'),
-    
+
     path('product_delete/<str:pk>/',
          views.product_delete, name='product_delete'),
     path('productType_delete/<str:pk>/',
@@ -87,8 +92,8 @@ urlpatterns = [
          views.saleType_delete, name='saleType_delete'),
     path('transaction_delete/<str:pk>/',
          views.transaction_delete, name='transaction_delete'),
-    
-    
+
+
     path('daily_sales/',
          DailySalesView.as_view(), name='daily_sales'),
     path('monthly_sales/',
