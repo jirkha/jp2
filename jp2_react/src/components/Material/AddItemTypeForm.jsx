@@ -61,7 +61,7 @@ const AddItemTypeForm = (props) => {
                 dispatch(getMaterial()); //aktualizuje seznam materiálu, aby se aktualizovalo pole typ materiálu
                 setNotify({
                   isOpen: true,
-                  message: 'Typ materiálu byl úspěšně upraven',
+                  message: 'Kategorie materiálu byla úspěšně upravena',
                   type: 'success'
                 })
             }).catch(err => console.log(err))
@@ -75,10 +75,10 @@ const AddItemTypeForm = (props) => {
         //console.log("itemType: ",res.data.type);
         dispatch(getMaterialType());
         setNotify({
-                  isOpen: true,
-                  message: 'Nový druh materiálu byl úspěšně vložen',
-                  type: 'success'
-                })
+          isOpen: true,
+          message: "Nová kategorie materiálu byla úspěšně vložena",
+          type: "success",
+        });
     }).catch(err => console.log(err))
       }}}
 

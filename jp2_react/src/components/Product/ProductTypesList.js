@@ -61,7 +61,7 @@ function ProductTypesList() {
             dispatch(getProductType());
             setNotify({
               isOpen: true,
-              message: `Druh materiálu ${type.name} byl odstraněn`,
+              message: `Kategorie materiálu ${type.name} byla odstraněna`,
               type: "warning",
             });
           })
@@ -70,7 +70,7 @@ function ProductTypesList() {
             setNotify({
               isOpen: true,
               message:
-                "Není možno odstranit druh produktu, protože by pravděpodobně došlo k odstranění všech produktů tohoto typu! Tento druh produktu lze pouze upravit.",
+                "Není možno odstranit kategorii produktu, protože by pravděpodobně došlo k odstranění všech produktů této kategorie! Tuto kategorii produktu lze pouze upravit.",
               type: "error",
             });
           });
@@ -88,7 +88,7 @@ function ProductTypesList() {
             //onClick={(() => setOpenPopup2(true), setMaterialTypeObj(undefined))}
             onClick={addAction}
           >
-            Přidat nový druh produktu
+            Přidat novou kategorii produktu
           </Button>
         </Stack>
         <Grid container spacing={{ xs: 2, md: 2 }}>
@@ -96,7 +96,7 @@ function ProductTypesList() {
             <Grid item xs={6} sm={5} md={3} lg={2} key={type.id}>
               {/* <Paper elevation={2}> */}
               <BasicCard
-                typeItem="Druh produktu"
+                typeItem="Kategorie produktu"
                 type={type} //místo posílání type zabudovat useRef
                 typeCount={type.product_count}
                 delete={productTypeDelete} //využít useRef, aby se nemuselo id posílat tam a zpět
@@ -109,7 +109,7 @@ function ProductTypesList() {
         </Grid>
         {productTypeObj ? (
           <Popup2
-            title={`Editace druhu produktu ${productTypeObj.name}`}
+            title={`Editace kategorie produktu ${productTypeObj.name}`}
             openPopup2={openPopup2}
             setOpenPopup2={setOpenPopup2}
           >
@@ -120,7 +120,7 @@ function ProductTypesList() {
           </Popup2>
         ) : (
           <Popup2
-            title="Vložení nového druhu produktu"
+            title="Vložení nové kategorie produktu"
             openPopup2={openPopup2}
             setOpenPopup2={setOpenPopup2}
           >

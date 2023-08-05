@@ -39,7 +39,7 @@ function ListMaterialPage() {
           align="center" //zarovná doprostřed
           gutterBottom //vytvoří mezeru pod textem
         >
-          &#9782; Druhy materiálu
+          &#9782; Kategorie materiálu
         </Typography>
         <Stack sx={{ justifyContent: "center" }} direction="row">
           <ItemTypesList />

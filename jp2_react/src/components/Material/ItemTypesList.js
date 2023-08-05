@@ -61,7 +61,7 @@ function ItemTypesList() {
             dispatch(getMaterialType());
             setNotify({
               isOpen: true,
-              message: `Typ materiálu ${type.name} byl odstraněn`,
+              message: `Kategorie materiálu ${type.name} byla odstraněna`,
               type: "warning",
             });
           })
@@ -70,7 +70,7 @@ function ItemTypesList() {
             setNotify({
               isOpen: true,
               message:
-                "Není možno odstranit typ materiálu, protože by pravděpodobně došlo k odstranění všech produktů tohoto typu! Typ materiálu lze upravit.",
+                "Není možno odstranit kategorii materiálu, protože by pravděpodobně došlo k odstranění všech produktů tohoto typu! Kategorii materiálu lze upravit.",
               type: "error",
             });
           });
@@ -88,7 +88,7 @@ function ItemTypesList() {
             //onClick={(() => setOpenPopup2(true), setMaterialTypeObj(undefined))}
             onClick={addAction}
           >
-            Přidat nový druh materiálu
+            Přidat novou kategorii materiálu
           </Button>
         </Stack>
         <Grid container spacing={{ xs: 2, md: 2 }}>
@@ -96,7 +96,7 @@ function ItemTypesList() {
             <Grid item xs={6} sm={5} md={3} lg={2} key={type.id}>
               {/* <Paper elevation={2}> */}
               <BasicCard
-                typeItem="Druh materiálu"
+                typeItem="Kategorie materiálu"
                 type={type} //místo posílání type zabudovat useRef
                 typeCount={type.material_count}
                 delete={itemTypeDelete} //využít useRef, aby se nemuselo id posílat tam a zpět
@@ -109,7 +109,7 @@ function ItemTypesList() {
         </Grid>
         {materialTypeObj ? (
           <Popup2
-            title={`Editace typu materiálu ${materialTypeObj.name}`}
+            title={`Editace kategorie materiálu ${materialTypeObj.name}`}
             openPopup2={openPopup2}
             setOpenPopup2={setOpenPopup2}
           >
@@ -120,7 +120,7 @@ function ItemTypesList() {
           </Popup2>
         ) : (
           <Popup2
-            title="Vložení typu materiálu"
+            title="Vložení kategorie materiálu"
             openPopup2={openPopup2}
             setOpenPopup2={setOpenPopup2}
           >

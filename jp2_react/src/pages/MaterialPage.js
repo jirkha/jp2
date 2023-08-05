@@ -5,7 +5,7 @@ import Axios from "axios";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Button, Container, Typography, Divider, Grid } from "@mui/material";
+import { Button, Container, Typography, Divider, Grid, Stack, Box } from "@mui/material";
 import { Popup } from '../components/Global/Other/Popup';
 import AddItemForm from '../components/Material/AddItemForm';
 
@@ -64,110 +64,150 @@ const MaterialPage = () => {
           </Typography>
           {/* <Typography variant="subtitle1">ID: {material?.m_ser.id}</Typography>
         <Typography variant="h6">Typ: {material?.m_ser.type.name}</Typography> */}
-
-          <Grid
-            container
-            spacing={2}
-            //direction={"row"}
-            alignContent={"center"}
-            //xs={12}
-          >
-            <Grid
-              //container
-              item
-              xs={3}
-              //justifyContent={"start"}
-            >
-              <Typography variant="subtitle1" color="primary">
-                Identifikační číslo
-              </Typography>
-            </Grid>
-            <Grid
-              //container
-              item
-              xs={9}
-              //justifyContent={"start"}
-            >
-              <Typography variant="subtitle1">{material?.id}</Typography>
-            </Grid>
-            <Divider variant="middle" style={{ width: "80%" }} />
-            <Grid item xs={3}>
-              <Typography variant="subtitle1" color="primary">
-                Typ materiálu
-              </Typography>
-            </Grid>
-            <Grid item xs={9}>
-              <Typography variant="subtitle1">{material?.type.name}</Typography>
-            </Grid>
-            <Divider variant="middle" style={{ width: "80%" }} />
-            <Grid item xs={3}>
-              <Typography variant="subtitle1" color="primary">
-                Cena materiálu
-              </Typography>
-            </Grid>
-            <Grid item xs={9}>
-              <Typography variant="subtitle1">
-                {material?.costs} Kč za {material?.unit}
-              </Typography>
-            </Grid>
-            <Divider variant="middle" style={{ width: "80%" }} />
-            <Grid item xs={3}>
-              <Typography variant="subtitle1" color="primary">
-                Množství naskladněného materiálu
-              </Typography>
-            </Grid>
-            <Grid item xs={9}>
-              <Typography variant="subtitle1">
-                {material?.quantity_of_material} {material?.unit}
-              </Typography>
-            </Grid>
-            <Divider variant="middle" style={{ width: "80%" }} />
-            <Grid item xs={3}>
-              <Typography variant="subtitle1" color="primary">
-                Dodavatel
-              </Typography>
-            </Grid>
-            <Grid item xs={9}>
-              <Typography variant="subtitle1">{material?.supplier}</Typography>
-            </Grid>
-            <Divider variant="middle" style={{ width: "80%" }} />
-            <Grid item xs={3}>
-              <Typography variant="subtitle1" color="primary">
-                Odkaz
-              </Typography>
-            </Grid>
-            <Grid item xs={9}>
-              <Typography variant="subtitle1" component="div">
-                <a href={`https://${material?.link}`} target="_blank">
-                  {material?.link}
-                </a>
-              </Typography>
-            </Grid>
-            <Divider variant="middle" style={{ width: "80%" }} />
-            <Grid item xs={3}>
-              <Typography variant="subtitle1" color="primary">
-                Vytvořeno
-              </Typography>
-            </Grid>
-            <Grid item xs={9}>
-              <Typography variant="subtitle1">
-                {/* {format(new Date(material?.m_ser.created), "dd.MM.yyyy kk:mm:ss")} */}
-                {material?.created}
-              </Typography>
-            </Grid>
-            <Divider variant="middle" style={{ width: "80%" }} />
-            <Grid item xs={3}>
-              <Typography variant="subtitle1" color="primary">
-                Upraveno
-              </Typography>
-            </Grid>
-            <Grid item xs={9} sx={{ mb: 5 }}>
-              <Typography variant="subtitle1">
-                {/* {format(new Date(material?.m_ser.updated), "dd.MM.yyyy kk:mm:ss")} */}
-                {material?.updated}
-              </Typography>
-            </Grid>
-          </Grid>
+          <Stack ml={-5} direction={{ xs: "column", md: "row" }}>
+            <Container>
+              <Grid
+                container
+                spacing={2}
+                //direction={"row"}
+                alignContent={"center"}
+                //xs={12}
+              >
+                <Grid
+                  //container
+                  item
+                  xs={3}
+                  //justifyContent={"start"}
+                >
+                  <Typography variant="subtitle1" color="primary">
+                    Identifikační číslo
+                  </Typography>
+                </Grid>
+                <Grid
+                  //container
+                  item
+                  xs={9}
+                  //justifyContent={"start"}
+                >
+                  <Typography variant="subtitle1">{material?.id}</Typography>
+                </Grid>
+                <Divider variant="middle" style={{ width: "80%" }} />
+                <Grid item xs={3}>
+                  <Typography variant="subtitle1" color="primary">
+                    Kategorie materiálu
+                  </Typography>
+                </Grid>
+                <Grid item xs={9}>
+                  <Typography variant="subtitle1">
+                    {material?.type.name}
+                  </Typography>
+                </Grid>
+                <Divider variant="middle" style={{ width: "80%" }} />
+                <Grid item xs={3}>
+                  <Typography variant="subtitle1" color="primary">
+                    Cena materiálu
+                  </Typography>
+                </Grid>
+                <Grid item xs={9}>
+                  <Typography variant="subtitle1">
+                    {material?.costs} Kč za {material?.unit}
+                  </Typography>
+                </Grid>
+                <Divider variant="middle" style={{ width: "80%" }} />
+                <Grid item xs={3}>
+                  <Typography variant="subtitle1" color="primary">
+                    Množství naskladněného materiálu
+                  </Typography>
+                </Grid>
+                <Grid item xs={9}>
+                  <Typography variant="subtitle1">
+                    {material?.quantity_of_material} {material?.unit}
+                  </Typography>
+                </Grid>
+                <Divider variant="middle" style={{ width: "80%" }} />
+                <Grid item xs={3}>
+                  <Typography variant="subtitle1" color="primary">
+                    Dodavatel
+                  </Typography>
+                </Grid>
+                <Grid item xs={9}>
+                  <Typography variant="subtitle1">
+                    {material?.supplier}
+                  </Typography>
+                </Grid>
+                <Divider variant="middle" style={{ width: "80%" }} />
+                <Grid item xs={3}>
+                  <Typography variant="subtitle1" color="primary">
+                    Odkaz
+                  </Typography>
+                </Grid>
+                <Grid item xs={9}>
+                  <Typography variant="subtitle1" component="div">
+                    <a href={`${material?.link}`} target="_blank">
+                      {material?.link}
+                    </a>
+                  </Typography>
+                </Grid>
+                <Divider variant="middle" style={{ width: "80%" }} />
+                <Grid item xs={3}>
+                  <Typography variant="subtitle1" color="primary">
+                    Poznámka
+                  </Typography>
+                </Grid>
+                <Grid item xs={9}>
+                  <Typography variant="subtitle1">
+                    {material?.note}
+                  </Typography>
+                </Grid>
+                <Divider variant="middle" style={{ width: "80%" }} />
+                <Grid item xs={3}>
+                  <Typography variant="subtitle1" color="primary">
+                    Vytvořeno
+                  </Typography>
+                </Grid>
+                <Grid item xs={9}>
+                  <Typography variant="subtitle1">
+                    {/* {format(new Date(material?.m_ser.created), "dd.MM.yyyy kk:mm:ss")} */}
+                    {material?.created}
+                  </Typography>
+                </Grid>
+                <Divider variant="middle" style={{ width: "80%" }} />
+                <Grid item xs={3}>
+                  <Typography variant="subtitle1" color="primary">
+                    Upraveno
+                  </Typography>
+                </Grid>
+                <Grid item xs={9} sx={{ mb: 5 }}>
+                  <Typography variant="subtitle1">
+                    {/* {format(new Date(material?.m_ser.updated), "dd.MM.yyyy kk:mm:ss")} */}
+                    {material?.updated}
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Container>
+            {material?.image && (
+              <Container>
+                <Grid item xs={4}>
+                  <Typography variant="subtitle1" color="primary">
+                    Obrázek
+                  </Typography>
+                </Grid>
+                <Grid item xs={8}>
+                  <Box
+                    component="img"
+                    sx={{
+                      // height: 233,
+                      // width: 350,
+                      maxHeight: { sm: 350, xs: 250 },
+                      maxWidth: { sm: 525, xs: 375 },
+                    }}
+                    alt="material"
+                    src={material?.image}
+                  />
+                </Grid>
+              </Container>
+            )}
+          </Stack>
 
           <Button
             type="delete"

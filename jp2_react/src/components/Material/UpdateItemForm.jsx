@@ -59,18 +59,25 @@ const UpdateItemForm = () => {
     const re = /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/gm
 
   const validationSchema = Yup.object({
-    type: Yup.string().required("Prosím vyberte typ materiálu"),//.oneOf(itemType),
+    type: Yup.string().required("Prosím vyberte kategorii materiálu"), //.oneOf(itemType),
     name: Yup.string().required("Prosím zadejte název položky"),
-    costs: Yup.number().min(0).max(1000000000).required("Prosím zadejte cenu položky (minimálně 0 a maximálně 1 000 000 000 Kč)"),
+    costs: Yup.number()
+      .min(0)
+      .max(1000000000)
+      .required(
+        "Prosím zadejte cenu položky (minimálně 0 a maximálně 1 000 000 000 Kč)"
+      ),
     unit: Yup.string().required("Prosím vyberte jednotku"),
     supplier: Yup.string(),
-    link: Yup.string().matches(re,'Zadejte prosím platný odkaz'),
-    note: Yup.string()
+    //link: Yup.string().matches(re,'Zadejte prosím platný odkaz'),
+    link: Yup.string(),
+    note: Yup.string(),
   });
 
   const initialValues = {
     name: material?.name ?? "",
     type: "", //material.type.name,
+    image: material?.image ?? "",
     costs: material?.costs ?? "",
     unit: material?.unit ?? "",
     supplier: material?.supplier ?? "",
@@ -85,6 +92,7 @@ const UpdateItemForm = () => {
   const onSubmit = (values) => {
     const { name,
         type,
+        image,
         costs,
         unit,
         supplier,
@@ -95,6 +103,7 @@ const UpdateItemForm = () => {
     Axios.put(`/api/item_update/${materialId}/`, {
         name,
         type,
+        image,
         costs,
         unit,
         supplier,
@@ -135,125 +144,171 @@ const UpdateItemForm = () => {
         //navigate('/');
       }}
     >
-      {({ isValid }) => (
-      <Form>
-        <Box sx={{  flexWrap: "wrap", }}>
-        <Grid 
-          container 
-          spacing={2}
-          // justifyContent="center"
-          direction="column"
-          maxWidth="550px"
-          //alignItems="baseline"
-          >
-            {/* <JPLabel className="label" htmlFor="name">
+      {({ isValid, setFieldValue, values }) => (
+        <Form>
+          <Box sx={{ flexWrap: "wrap" }}>
+            <Grid
+              container
+              spacing={2}
+              // justifyContent="center"
+              direction="column"
+              maxWidth="550px"
+              //alignItems="baseline"
+            >
+              {/* <JPLabel className="label" htmlFor="name">
             </JPLabel> */}
-            <Grid item xs={12}>
-              <Typography
-                variant="subtitle2"
-                //color="textPrimary"
-                //align="center" //zarovná doprostřed
-                gutterBottom //vytvoří mezeru pod textem
-                >Povinné údaje
-              </Typography>
-              <TextField id="name" InputLabelProps={{
-            shrink: true,
-          }} name="name" label="Název" variant="outlined" required />
-            </Grid>
-            <Grid item xs={12}>
-               <ItemTypesWrapper
-                name="type"
-                // size="small"
-                label="Typ materiálu ..."
-                InputLabelProps={{
-            shrink: true,
-          }}
-                //options={productOptions}
-                required
-              > 
-                </ItemTypesWrapper>               
-              {/* <Field name="itemType" as="select" className="select">
-                <option value={""}>Vyberte ze seznamu...</option>
-                {productOptions}
-              </Field> */}
-            </Grid>
-            <Grid item xs={6}>
-              <TextField 
-                id="costs" 
-                name="costs" 
-                InputLabelProps={{
-            shrink: true,
-          }}
-                // size="small"
-                label="Cena materiálu (za kus/jednotku)" 
-                helperText="Zadejte prosím pouze celé číslo (bez haléřů)"
-                InputProps={{
-                  endAdornment: <InputAdornment position='end'>Kč / ks (jednotka)</InputAdornment>
-                }}
-                required variant="outlined" />
-            </Grid>
-             <Grid item xs={6}>
-              <FormControl fullWidth required>
-                <SelectWrapper
-                  //id="unit" 
-                  name="unit" 
+              <Grid item xs={12}>
+                <Typography
+                  variant="subtitle2"
+                  //color="textPrimary"
+                  //align="center" //zarovná doprostřed
+                  gutterBottom //vytvoří mezeru pod textem
+                >
+                  Povinné údaje
+                </Typography>
+                <TextField
+                  id="name"
                   InputLabelProps={{
                     shrink: true,
                   }}
-                  //value={unit}
-                  label="Jednotka"
-                  options={optionsUnit}
+                  name="name"
+                  label="Název"
+                  variant="outlined"
+                  required
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <ItemTypesWrapper
+                  name="type"
+                  // size="small"
+                  label="Kategorie materiálu ..."
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  //options={productOptions}
+                  required
+                ></ItemTypesWrapper>
+                {/* <Field name="itemType" as="select" className="select">
+                <option value={""}>Vyberte ze seznamu...</option>
+                {productOptions}
+              </Field> */}
+              </Grid>
+              <Grid item xs={6}>
+                <TextField
+                  id="costs"
+                  name="costs"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  // size="small"
+                  label="Cena materiálu (za kus/jednotku)"
+                  helperText="Zadejte prosím pouze celé číslo (bez haléřů)"
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        Kč / ks (jednotka)
+                      </InputAdornment>
+                    ),
+                  }}
+                  required
+                  variant="outlined"
+                />
+              </Grid>
+              <Grid item xs={6}>
+                <FormControl fullWidth required>
+                  <SelectWrapper
+                    //id="unit"
+                    name="unit"
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    //value={unit}
+                    label="Jednotka"
+                    options={optionsUnit}
+                  ></SelectWrapper>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12}>
+                <Typography
+                  variant="subtitle2"
+                  //color="textPrimary"
+                  //align="center" //zarovná doprostřed
+                  gutterBottom //vytvoří mezeru pod textem
                 >
-                </SelectWrapper>
-              </FormControl>
-            </Grid>
-            <Grid item xs={12}>
-              <Typography
-                variant="subtitle2"
-                //color="textPrimary"
-                //align="center" //zarovná doprostřed
-                gutterBottom //vytvoří mezeru pod textem
-                >Nepovinné údaje
-              </Typography>
-              <TextField id="supplier" InputLabelProps={{
-            shrink: true,
-          }} name="supplier" label="Dodavatel / Obchod" variant="outlined" />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField id="link" name="link" InputLabelProps={{
-            shrink: true,
-          }} label="Odkaz na materiál" helperText="Zadejte prosím platný odkaz" variant="outlined" />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField id="note" name="note" InputLabelProps={{
-            shrink: true,
-          }} label="Poznámka" multiline rows={6} variant="outlined" />
-            </Grid>
+                  Nepovinné údaje
+                </Typography>
+                <Typography variant="body2">Fotografie produktu</Typography>
+                <Button variant="outlined" component="label" size="small">
+                  Upravit forogafii
+                  <input
+                    type="file"
+                    name="image"
+                    onChange={(event) => {
+                      //setFieldValue("image", Array.from(event.target.files));
+                      setFieldValue("image", event.target.files[0]);
+                    }}
+                    hidden
+                  />
+                </Button>
+                {values.image && (
+                  <Typography variant="caption" display="block" gutterBottom>
+                    {values.image.name ? values.image.name : values.image}
+                  </Typography>
+                )}
+                <TextField
+                  id="supplier"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  name="supplier"
+                  label="Dodavatel / Obchod"
+                  variant="outlined"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  id="link"
+                  name="link"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  label="Odkaz na materiál"
+                  helperText="Zadejte prosím platný odkaz"
+                  variant="outlined"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  id="note"
+                  name="note"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  label="Poznámka"
+                  multiline
+                  rows={6}
+                  variant="outlined"
+                />
+              </Grid>
 
-            <Grid item xs={12}>
-                <Button 
-            type="submit" 
-            className="button"
-            variant="contained"
-             >
-            Uložit
-          </Button> 
-            </Grid>
+              <Grid item xs={12}>
+                <Button type="submit" className="button" variant="contained">
+                  Uložit
+                </Button>
+              </Grid>
 
-            
-            {/* <JPinput
+              {/* <JPinput
                 name="name"
                 type="name"
                 className="input"
                 placeholder="Název"
               /> */}
               {/* <ErrorMessage name="name" render={renderError} /> */}
-            {/* </div>
+              {/* </div>
         
           </div> */}
-         
-        
-          {/* <div className="field">
+
+              {/* <div className="field">
             <JPLabel className="label" htmlFor="itemType">
               Typ produktu*
             </JPLabel>
@@ -265,15 +320,11 @@ const UpdateItemForm = () => {
               <ErrorMessage name="itemType" render={renderError} />
             </div>
           </div> */}
-        
-        
-        </Grid>
-        </Box>
-      </Form>
-      
+            </Grid>
+          </Box>
+        </Form>
       )}
     </Formik>
-    
   );
 };
 export default UpdateItemForm
