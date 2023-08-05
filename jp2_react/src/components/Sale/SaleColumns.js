@@ -19,8 +19,8 @@ export const SALE_COLUMNS = [
     ),
   },
   {
-    Header: "Druh ",
-    Footer: "Druh",
+    Header: "Kategorie ",
+    Footer: "Kategorie",
     accessor: "type.name",
   },
   {

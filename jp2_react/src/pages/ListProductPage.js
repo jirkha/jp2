@@ -46,7 +46,7 @@ function ListProductPage() {
           align="center" //zarovná doprostřed
           gutterBottom //vytvoří mezeru pod textem
         >
-          &#9782; Druhy produktů
+          &#9782; Kategorie produktů
         </Typography>
         <Stack sx={{ justifyContent: "center" }} direction="row">
           <ProductTypesList />

@@ -231,7 +231,7 @@ const AddProductForm = (props) => {
                   <SelectArrayWrapper
                     name="product_type"
                     // size="small"
-                    label="Druh produktu ..."
+                    label="Kategorie produktu ..."
                     options={productType}
                     required
                   ></SelectArrayWrapper>
@@ -302,14 +302,11 @@ const AddProductForm = (props) => {
                     <> */}
                   <Typography
                     variant="body2"
-                    //color="textPrimary"
-                    //align="center" //zarovná doprostřed
-                    //gutterBottom //vytvoří mezeru pod textem
                   >
                     Fotografie produktu
                   </Typography>
                   <Button variant="outlined" component="label" size="small">
-                    {editedProduct ? "Vyměnit forogafii" : "Vložit fotografii"}
+                    {editedProduct ? "Upravit forogafii" : "Vložit fotografii"}
                     <input
                       type="file"
                       name="image"
@@ -384,7 +381,7 @@ const AddProductForm = (props) => {
       </Formik>
 
       <Popup2
-        title="Vložení druhu produktu"
+        title="Vložení kategorie produktu"
         openPopup2={openPopup2}
         setOpenPopup2={setOpenPopup2}
       >

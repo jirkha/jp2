@@ -57,7 +57,7 @@ const AddSaleForm = (props) => {
 
   const validationSchema = Yup.object({
     name: Yup.string().required("Prosím zadejte název prodejního kanálu"), //.oneOf(itemType),
-    type: Yup.string().required("Prosím vyberte typ prodejního kanálu"),
+    type: Yup.string().required("Prosím vyberte kategorii prodejního kanálu"),
     route: Yup.string(),
     street_number: Yup.string(),
     city: Yup.string(),
@@ -207,7 +207,7 @@ const AddSaleForm = (props) => {
                   <SelectArrayWrapper
                     //id="unit"
                     name="type"
-                    label="Druh prodejního kanálu"
+                    label="Kategorie prodejního kanálu"
                     options={saleType}
                     required
                   ></SelectArrayWrapper>
@@ -319,7 +319,7 @@ const AddSaleForm = (props) => {
         )}
       </Formik>
       <Popup2
-        title="Vložení druhu prodejního kanálu"
+        title="Vložení kategorie prodejního kanálu"
         openPopup2={openPopup2}
         setOpenPopup2={setOpenPopup2}
       >

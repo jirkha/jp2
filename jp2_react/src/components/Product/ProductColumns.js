@@ -20,8 +20,8 @@ export const PRODUCT_COLUMNS = [
     ),
   },
   {
-    Header: "Druh ",
-    Footer: "Druh",
+    Header: "Kategorie ",
+    Footer: "Kategorie",
     accessor: "product_type.name",
   },
   // {

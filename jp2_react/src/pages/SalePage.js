@@ -31,7 +31,7 @@ function SalePage() {
           align="center" //zarovná doprostřed
           gutterBottom //vytvoří mezeru pod textem
         >
-          &#9782; Druhy prodejních kanálů
+          &#9782; Kategorie prodejních kanálů
         </Typography>
         <Stack sx={{ justifyContent: "center" }} direction="row">
           <SaleTypesList />

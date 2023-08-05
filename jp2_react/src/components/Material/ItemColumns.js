@@ -18,8 +18,8 @@ export const ITEM_COLUMNS = [
     ),
   },
   {
-    Header: "Typ ",
-    Footer: "Typ",
+    Header: "Kategorie ",
+    Footer: "Kategorie",
     accessor: "type.name",
   },
   {
