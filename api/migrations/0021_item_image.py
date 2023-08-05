@@ -9,10 +9,3 @@ class Migration(migrations.Migration):
         ('api', '0020_alter_sale_ic_number_alter_sale_postal_code_and_more'),
     ]
 
-    operations = [
-        migrations.AddField(
-            model_name='item',
-            name='image',
-            field=models.ImageField(blank=True, default=None, null=True, upload_to='post_images'),
-        ),
-    ]
