@@ -138,11 +138,6 @@ def item_update(response, pk):
     item.note = data['note']
     if str(item.image) != str(data['image'])[7:]:
         item.image = data['image']
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> changes
     item.save()
 
     # print("m_ser: ",m_ser)
@@ -154,12 +149,7 @@ def item_update(response, pk):
 
     return Response(m_ser.data)
 
-### upraví obrázek daného materiálu
-<<<<<<< HEAD
-=======
 
-
->>>>>>> changes
 @api_view(['PATCH'])
 def item_image_patch(response, pk):
     parser_classes = (MultiPartParser, FormParser)
@@ -173,10 +163,6 @@ def item_image_patch(response, pk):
 
     p_ser = MaterialSerializer(item)
     return Response(p_ser.data)
-<<<<<<< HEAD
-=======
-
->>>>>>> changes
 
 @api_view(['PUT'])
 def itemType_update(response, pk):
@@ -417,11 +403,6 @@ class ProductView(APIView):
 
         product.name = data['name']
         product.product_type = ProductType.objects.get(id=data['product_type'])
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> changes
         if str(product.image) != str(data['image'])[7:]:
             product.image = data['image']
 
