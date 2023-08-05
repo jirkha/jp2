@@ -59,7 +59,7 @@ function SaleTypesList() {
             dispatch(getSaleType());
             setNotify({
               isOpen: true,
-              message: `Druh prodejního kanálu ${type.name} byl odstraněn`,
+              message: `Kategorie prodejního kanálu ${type.name} byla odstraněna`,
               type: "warning",
             });
           })
@@ -68,7 +68,7 @@ function SaleTypesList() {
             setNotify({
               isOpen: true,
               message:
-                "Není možno odstranit druh prodejního kanálu, protože by pravděpodobně došlo k odstranění všech prodejních kanálů tohoto typu! Tento druh prodejního kanálu lze pouze upravit.",
+                "Není možno odstranit kategorii prodejního kanálu, protože by pravděpodobně došlo k odstranění všech prodejních kanálů tohoto typu! Tuto kategorii prodejního kanálu lze pouze upravit.",
               type: "error",
             });
           });
@@ -86,7 +86,7 @@ function SaleTypesList() {
             //onClick={(() => setOpenPopup2(true), setMaterialTypeObj(undefined))}
             onClick={addAction}
           >
-            Přidat druh prodejního kanálu
+            Přidat kategorii prodejního kanálu
           </Button>
         </Stack>
         <Grid container spacing={{ xs: 2, md: 2 }}>
@@ -94,7 +94,7 @@ function SaleTypesList() {
             <Grid item xs={6} sm={5} md={3} lg={2} key={type.id}>
               {/* <Paper elevation={2}> */}
               <BasicCard
-                typeItem="Druh prodejního kanálu"
+                typeItem="Kategorie prodejního kanálu"
                 type={type} //místo posílání type zabudovat useRef
                 typeCount={type.sale_count}
                 delete={saleTypeDelete} //využít useRef, aby se nemuselo id posílat tam a zpět
@@ -107,7 +107,7 @@ function SaleTypesList() {
         </Grid>
         {saleTypeObj ? (
           <Popup2
-            title={`Editace druhu prodej. kanálu ${saleTypeObj.name}`}
+            title={`Editace kategorie prodej. kanálu ${saleTypeObj.name}`}
             openPopup2={openPopup2}
             setOpenPopup2={setOpenPopup2}
           >
@@ -118,7 +118,7 @@ function SaleTypesList() {
           </Popup2>
         ) : (
           <Popup2
-            title="Vložení prodejního kanálu"
+            title="Vložení kategorie prodejního kanálu"
             openPopup2={openPopup2}
             setOpenPopup2={setOpenPopup2}
           >

@@ -145,6 +145,26 @@ function ProductDetail(props) {
               <Divider variant="middle" style={{ width: "80%" }} />
               <Grid item xs={4}>
                 <Typography variant="subtitle1" color="primary">
+                  Výrobní postup
+                </Typography>
+              </Grid>
+              <Grid item xs={8}>
+                <Typography variant="subtitle1">
+                  {product?.procedure}
+                </Typography>
+              </Grid>
+              <Divider variant="middle" style={{ width: "80%" }} />
+              <Grid item xs={4}>
+                <Typography variant="subtitle1" color="primary">
+                  Poznámka
+                </Typography>
+              </Grid>
+              <Grid item xs={8}>
+                <Typography variant="subtitle1">{product?.note}</Typography>
+              </Grid>
+              <Divider variant="middle" style={{ width: "80%" }} />
+              <Grid item xs={4}>
+                <Typography variant="subtitle1" color="primary">
                   Vytvořeno
                 </Typography>
               </Grid>
@@ -199,10 +219,7 @@ function ProductDetail(props) {
         <Stack ml={-2}>
           <Typography variant="subtitle1" color="primary" sx={{ mb: 2 }}>
             Obsah produktu
-            <IconButton
-              onClick={() => setOpenPopup2(true)}
-              sx={{ pt: "0px" }}
-            >
+            <IconButton onClick={() => setOpenPopup2(true)} sx={{ pt: "0px" }}>
               <EditIcon style={{ fontSize: 32 }} color="warning" />
             </IconButton>
           </Typography>

@@ -20,7 +20,7 @@ function SaleDetail({ sale }) {
   const rows = [
     { name: "Ident. číslo", content: sale?.id },
     //{ name: "Název", content: sale.name },
-    { name: "Druh", content: sale?.type.name },
+    { name: "Kategorie", content: sale?.type.name },
     { name: "Celkový počet transakcí", content: sale?.transaction_count },
     { name: "Celkové tržby", content: `${sale?.amount.toLocaleString()} Kč` },
     { name: "Značka", content: sale?.brand ? "J&P" : "externí prodejní kanál" },

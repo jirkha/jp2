@@ -95,7 +95,7 @@ function UpdateMadeProduct (props) {
                   <SelectWrapper
                     name="variant"
                     size="small"
-                    label="Druh"
+                    label="Kategorie"
                     options={changeVariant}
                     required
                   ></SelectWrapper>

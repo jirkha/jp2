@@ -53,10 +53,10 @@ const AddSaleTypeForm = (props) => {
         dispatch(getSaleType());
         dispatch(getSale());
         setNotify({
-                  isOpen: true,
-                  message: 'Druh prodejního kanálu byl úspěšně upraven',
-                  type: 'success'
-                })
+          isOpen: true,
+          message: "Kategorie prodejního kanálu byla úspěšně upravena",
+          type: "success",
+        });
     }).catch(err => console.log(err))
     }
 
@@ -68,10 +68,10 @@ const AddSaleTypeForm = (props) => {
         console.log("Adding SaleType: ", res);
         dispatch(getSaleType());
         setNotify({
-              isOpen: true,
-              message: 'Druh prodejního kanálu byl úspěšně vložen',
-              type: 'success'
-            })
+          isOpen: true,
+          message: "Kategorie prodejního kanálu byla úspěšně vložena",
+          type: "success",
+        });
     }).catch(err => console.log(err))
     }
     

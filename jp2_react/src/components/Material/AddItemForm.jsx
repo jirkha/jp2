@@ -46,18 +46,20 @@ useEffect(() => {
 const re = /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/gm
 
   const validationSchema = Yup.object({
-    itemType: Yup.string().required("Prosím vyberte typ materiálu"),//.oneOf(itemType),
+    itemType: Yup.string().required("Prosím vyberte kategorii materiálu"),//.oneOf(itemType),
     name: Yup.string().required("Prosím zadejte název položky"),
     costs: Yup.number().min(0).max(1000000000).required("Prosím zadejte cenu položky (minimálně 0 a maximálně 1 000 000 000 Kč)"),
     unit: Yup.string().required("Prosím vyberte jednotku"),
     supplier: Yup.string(),
-    link: Yup.string().matches(re,'Zadejte prosím platný odkaz'),
+    //link: Yup.string().matches(re,'Zadejte prosím platný odkaz'),
+    link: Yup.string(),
     note: Yup.string()
   });
 
   const initialValues = {
     name: item?.name ?? "",
     itemType: item?.type?.id ?? "",
+    image: item?.image ?? "",
     costs: item?.costs ?? 0,
     unit: item?.unit ?? "",
     supplier: item?.supplier ?? "",
@@ -68,26 +70,23 @@ const re = /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-
   const navigate = useNavigate();
 
   const onSubmit = (values) => {
-    const { name,
-        itemType,
-        costs,
-        unit,
-        supplier,
-        link,
-        note
-    } = values;
-    // console.log("values", values);
-    // console.log("item_submit",item);
+
+        let formdata = new FormData();
+        formdata.append("image", values.image);
+        formdata.append("name", values.name);
+        formdata.append("itemType", values.itemType);
+        formdata.append("costs", values.costs);
+        formdata.append("unit", values.unit);
+        formdata.append("supplier", values.supplier);
+        formdata.append("link", values.link);
+        formdata.append("note", values.note);
 
     if (item) {
-    Axios.put(`/api/item_update/${item.id}/`, {
-        name,
-        itemType,
-        costs,
-        unit,
-        supplier,
-        link,
-        note
+    Axios.put(`/api/item_update/${item.id}/`,
+      formdata, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
     })
     .then(res => {
         console.log("Updating Item: ", res);
@@ -103,25 +102,22 @@ const re = /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-
   }
 
   else {
-  Axios.post('/api/item_add/', {
-          name,
-          itemType,
-          costs,
-          unit,
-          supplier,
-          link,
-          note
-      })
-      .then(res => {
-          console.log("Adding Item: ", res);
-          dispatch(getMaterial()); //aktualizuje seznam materiálu
-          dispatch(getMaterialType());
-          setNotify({
-                    isOpen: true,
-                    message: 'Nový materiál byl úspěšně vložen',
-                    type: 'success'
-                  })
-      }).catch(err => console.log(err))
+  Axios.post("/api/item_add/", formdata, {
+    headers: {
+      "content-type": "multipart/form-data",
+    }
+  },)
+    .then((res) => {
+      console.log("Adding Item: ", res);
+      dispatch(getMaterial()); //aktualizuje seznam materiálu
+      dispatch(getMaterialType());
+      setNotify({
+        isOpen: true,
+        message: "Nový materiál byl úspěšně vložen",
+        type: "success",
+      });
+    })
+    .catch((err) => console.log(err));
   }
 }
 
@@ -143,132 +139,182 @@ const re = /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-
 
   return (
     <>
-    <Formik
-      initialValues={initialValues}
-      validationSchema={validationSchema}
-      onSubmit={async (values, { resetForm }) => {
-        await onSubmit(values);
-        resetForm();
-        //navigate('/');
-      }}
-    >
-      {({ isValid }) => (
-      <Form>
-        <Box sx={{  flexWrap: "wrap", }}>
-        <Grid 
-          container 
-          spacing={1}
-          // justifyContent="center"
-          //direction="column"
-          maxWidth="430px"
-          alignItems="flex-start"
-          >
-            {/* <JPLabel className="label" htmlFor="name">
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={async (values, { resetForm }) => {
+          await onSubmit(values);
+          resetForm();
+          //navigate('/');
+        }}
+      >
+        {({ isValid, setFieldValue, values }) => (
+          <Form>
+            <Box sx={{ flexWrap: "wrap" }}>
+              <Grid
+                container
+                spacing={1}
+                // justifyContent="center"
+                //direction="column"
+                maxWidth="430px"
+                alignItems="flex-start"
+              >
+                {/* <JPLabel className="label" htmlFor="name">
             </JPLabel> */}
-            <Grid item xs={12}>
-              <Typography
-                variant="subtitle2"
-                //color="textPrimary"
-                //align="center" //zarovná doprostřed
-                gutterBottom //vytvoří mezeru pod textem
-                >Povinné údaje
-              </Typography>
-              <TextField id="name" name="name" label="Název" variant="outlined" required />
-            </Grid>
-            <Grid item xs={10}>
-               <SelectArrayWrapper
-                name="itemType"
-                // size="small"
-                label="Typ materiálu ..."
-                options={materialType}
-                required
-              > 
-                </SelectArrayWrapper>              
-              {/* <Field name="itemType" as="select" className="select">
+                <Grid item xs={12}>
+                  <Typography
+                    variant="subtitle2"
+                    //color="textPrimary"
+                    //align="center" //zarovná doprostřed
+                    gutterBottom //vytvoří mezeru pod textem
+                  >
+                    Povinné údaje
+                  </Typography>
+                  <TextField
+                    id="name"
+                    name="name"
+                    label="Název"
+                    variant="outlined"
+                    required
+                  />
+                </Grid>
+                <Grid item xs={10}>
+                  <SelectArrayWrapper
+                    name="itemType"
+                    // size="small"
+                    label="Kategorie materiálu ..."
+                    options={materialType}
+                    required
+                  ></SelectArrayWrapper>
+                  {/* <Field name="itemType" as="select" className="select">
                 <option value={""}>Vyberte ze seznamu...</option>
                 {productOptions}
               </Field> */}
-            </Grid>
-            <Grid item xs={2}>
-              {/* <AddButton.AddButton 
+                </Grid>
+                <Grid item xs={2}>
+                  {/* <AddButton.AddButton 
               fontSize="large" 
               color="success" 
               link="#itemTypeForm" 
               /> */}
-              <Button sx={{height: "55px", maxWidth: "10px"}} variant="outlined" size="inherit" color="primary" onClick={() => setOpenPopup2(true)}>
-                <AddOutlinedIcon />
-              </Button>    
-            </Grid>
-            <Grid item xs={6}>
-              <TextField 
-                id="costs" 
-                name="costs" 
-                // size="small"
-                label="Cena materiálu (za kus/jednotku)" 
-                helperText="Zadejte prosím pouze celé číslo (bez haléřů)"
-                InputProps={{
-                  endAdornment: <InputAdornment position='end'>Kč</InputAdornment>
-                }}
-                required variant="outlined" />
-            </Grid>
-            <Grid item xs={6}>
-              <FormControl fullWidth required>
-                <SelectWrapper
-                  //id="unit" 
-                  name="unit" 
-                  //value={unit}
-                  label="Jednotka"
-                  options={optionsUnit}
-                >
-                </SelectWrapper>
-              </FormControl>
-            </Grid>
-         
-            <Grid item xs={12}>
-              <Typography
-                variant="subtitle2"
-                //color="textPrimary"
-                //align="center" //zarovná doprostřed
-                gutterBottom //vytvoří mezeru pod textem
-                >Nepovinné údaje
-              </Typography>
-              <TextField id="supplier" name="supplier" label="Dodavatel / Obchod" variant="outlined" />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField id="link" name="link" label="Odkaz na materiál" helperText="Zadejte prosím platný odkaz" variant="outlined" />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField id="note" name="note" label="Poznámka" multiline rows={6} variant="outlined" />
-            </Grid>
+                  <Button
+                    sx={{ height: "55px", maxWidth: "10px" }}
+                    variant="outlined"
+                    size="inherit"
+                    color="primary"
+                    onClick={() => setOpenPopup2(true)}
+                  >
+                    <AddOutlinedIcon />
+                  </Button>
+                </Grid>
+                <Grid item xs={6}>
+                  <TextField
+                    id="costs"
+                    name="costs"
+                    // size="small"
+                    label="Cena materiálu (za kus/jednotku)"
+                    helperText="Zadejte prosím pouze celé číslo (bez haléřů)"
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">Kč</InputAdornment>
+                      ),
+                    }}
+                    required
+                    variant="outlined"
+                  />
+                </Grid>
+                <Grid item xs={6}>
+                  <FormControl fullWidth required>
+                    <SelectWrapper
+                      //id="unit"
+                      name="unit"
+                      //value={unit}
+                      label="Jednotka"
+                      options={optionsUnit}
+                    ></SelectWrapper>
+                  </FormControl>
+                </Grid>
 
-            <Grid item xs={12}>
-              {/* <Link to="#itemList"> */}
-               <Button 
-                type="submit" 
-                className="button"
-                variant="contained"
-                onClick={() => isValid && setOpenPopup(false)}
-                >
-                {item ? "Změnit" : "Přidat"}
-                </Button> 
-              {/* </Link> */}
-             
-            </Grid>
+                <Grid item xs={12}>
+                  <Typography
+                    variant="subtitle2"
+                    //color="textPrimary"
+                    //align="center" //zarovná doprostřed
+                    gutterBottom //vytvoří mezeru pod textem
+                  >
+                    Nepovinné údaje
+                  </Typography>
+                  <Typography variant="body2">Fotografie produktu</Typography>
+                  <Button variant="outlined" component="label" size="small">
+                    {values.image ? "Upravit fotografii" : "Vložit fotografii"}
+                    <input
+                      type="file"
+                      name="image"
+                      onChange={(event) => {
+                        //setFieldValue("image", Array.from(event.target.files));
+                        setFieldValue("image", event.target.files[0]);
+                      }}
+                      hidden
+                    />
+                  </Button>
+                  {values.image && (
+                    <Typography variant="caption" display="block" gutterBottom>
+                      {values.image.name ? values.image.name : values.image}
+                    </Typography>
+                  )}
+                  <TextField
+                    id="supplier"
+                    name="supplier"
+                    label="Dodavatel / Obchod"
+                    variant="outlined"
+                    sx={{ mt: 2 }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    id="link"
+                    name="link"
+                    label="Odkaz na materiál"
+                    helperText="Zadejte prosím platný odkaz"
+                    variant="outlined"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    id="note"
+                    name="note"
+                    label="Poznámka"
+                    multiline
+                    rows={6}
+                    variant="outlined"
+                  />
+                </Grid>
 
-            
-            {/* <JPinput
+                <Grid item xs={12}>
+                  {/* <Link to="#itemList"> */}
+                  <Button
+                    type="submit"
+                    className="button"
+                    variant="contained"
+                    onClick={() => isValid && setOpenPopup(false)}
+                  >
+                    {item ? "Změnit" : "Přidat"}
+                  </Button>
+                  {/* </Link> */}
+                </Grid>
+
+                {/* <JPinput
                 name="name"
                 type="name"
                 className="input"
                 placeholder="Název"
               /> */}
-              {/* <ErrorMessage name="name" render={renderError} /> */}
-            {/* </div>
+                {/* <ErrorMessage name="name" render={renderError} /> */}
+                {/* </div>
         
           </div> */}
-         
-        
-          {/* <div className="field">
+
+                {/* <div className="field">
             <JPLabel className="label" htmlFor="itemType">
               Typ produktu*
             </JPLabel>
@@ -280,25 +326,20 @@ const re = /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-
               <ErrorMessage name="itemType" render={renderError} />
             </div>
           </div> */}
-        
-        
-        </Grid>
-        </Box>
-      </Form>      
-      )}
-    </Formik>    
-  <Popup2 title="Vložení druhu materiálu"
+              </Grid>
+            </Box>
+          </Form>
+        )}
+      </Formik>
+      <Popup2
+        title="Vložení kategorie materiálu"
         openPopup2={openPopup2}
         setOpenPopup2={setOpenPopup2}
-        >
-          <AddItemTypeForm handleClose={handleClose} />
-    
-  </Popup2>
-  <Notification
-      notify={notify}
-      setNotify={setNotify}
-      />
-  </>
+      >
+        <AddItemTypeForm handleClose={handleClose} />
+      </Popup2>
+      <Notification notify={notify} setNotify={setNotify} />
+    </>
   );
 };
 export default AddItemForm
