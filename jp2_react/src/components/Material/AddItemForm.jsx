@@ -43,17 +43,22 @@ useEffect(() => {
   };
 
 
-const re = /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/gm
+//const re = /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/gm
+const re = /^\d+(\.\d{1,2})?$/;
 
   const validationSchema = Yup.object({
-    itemType: Yup.string().required("Prosím vyberte kategorii materiálu"),//.oneOf(itemType),
+    itemType: Yup.string().required("Prosím vyberte kategorii materiálu"), //.oneOf(itemType),
     name: Yup.string().required("Prosím zadejte název položky"),
-    costs: Yup.number().min(0).max(1000000000).required("Prosím zadejte cenu položky (minimálně 0 a maximálně 1 000 000 000 Kč)"),
+    costs: Yup.string()
+      .required(
+        "Prosím zadejte cenu položky (minimálně 0 a maximálně 1 000 000 000 Kč)"
+      )
+      .matches(re, "Pouze dvě desetinná místa oddělená tečkou!"),
     unit: Yup.string().required("Prosím vyberte jednotku"),
     supplier: Yup.string(),
     //link: Yup.string().matches(re,'Zadejte prosím platný odkaz'),
     link: Yup.string(),
-    note: Yup.string()
+    note: Yup.string(),
   });
 
   const initialValues = {
@@ -186,17 +191,8 @@ const re = /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-
                     options={materialType}
                     required
                   ></SelectArrayWrapper>
-                  {/* <Field name="itemType" as="select" className="select">
-                <option value={""}>Vyberte ze seznamu...</option>
-                {productOptions}
-              </Field> */}
                 </Grid>
                 <Grid item xs={2}>
-                  {/* <AddButton.AddButton 
-              fontSize="large" 
-              color="success" 
-              link="#itemTypeForm" 
-              /> */}
                   <Button
                     sx={{ height: "55px", maxWidth: "10px" }}
                     variant="outlined"
@@ -213,7 +209,7 @@ const re = /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-
                     name="costs"
                     // size="small"
                     label="Cena materiálu (za kus/jednotku)"
-                    helperText="Zadejte prosím pouze celé číslo (bez haléřů)"
+                    helperText="Haléře oddělujte tečkou"
                     InputProps={{
                       endAdornment: (
                         <InputAdornment position="end">Kč</InputAdornment>
@@ -303,29 +299,6 @@ const re = /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-
                   {/* </Link> */}
                 </Grid>
 
-                {/* <JPinput
-                name="name"
-                type="name"
-                className="input"
-                placeholder="Název"
-              /> */}
-                {/* <ErrorMessage name="name" render={renderError} /> */}
-                {/* </div>
-        
-          </div> */}
-
-                {/* <div className="field">
-            <JPLabel className="label" htmlFor="itemType">
-              Typ produktu*
-            </JPLabel>
-            <div className="control">
-              <Field name="itemType" style={selectStyle} as="select" className="select">
-                <option value={""}>Vyberte ze seznamu...</option>
-                {productOptions}
-              </Field>
-              <ErrorMessage name="itemType" render={renderError} />
-            </div>
-          </div> */}
               </Grid>
             </Box>
           </Form>
