@@ -27,13 +27,7 @@ urlpatterns = [
          views.itemType_delete, name='itemType_delete'),
     path('item_image_patch/<str:pk>',
          views.item_image_patch, name='item_image_patch'),
-<<<<<<< HEAD
-    
-    
-=======
-
-
->>>>>>> changes
+ 
     path('list_storage/', views.list_storage, name='list_storage'),
     path('list_removal/', views.list_removal, name='list_removal'),
     path('storage_add/', views.storage_add, name='storage_add'),
