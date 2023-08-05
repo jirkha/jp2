@@ -28,10 +28,14 @@ class Item(models.Model):  # položka (součást) produktu
         default='ks'
     )
     ### cena za danou součást produktu (cena za 1 ks / 1 jednotku jako např. kg)
-    costs = models.PositiveIntegerField()
+    costs = models.DecimalField(max_digits=10, decimal_places=2)
     ### celkové množství materiálu (nezadává se - počítá se automaticky dle na/vy-skladnění!)
     quantity_of_material = models.IntegerField(
         default=0, blank=True)
+    ### fotografie materiálu
+    image = models.ImageField(
+        upload_to="post_images",
+        null=True, blank=True, default=None)
     ### celková hodnota skladové zásoby daného materiálu, spočítá se automaticky
     value = models.PositiveIntegerField(default=0)
     ### dodavatel dané součásti produktu (firma od které kupuji danou součást)

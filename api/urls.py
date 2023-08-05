@@ -25,6 +25,8 @@ urlpatterns = [
     path('item_delete/<str:pk>/', views.item_delete, name='item_delete'),
     path('itemType_delete/<str:pk>',
          views.itemType_delete, name='itemType_delete'),
+    path('item_image_patch/<str:pk>',
+         views.item_image_patch, name='item_image_patch'),
     
     
     path('list_storage/', views.list_storage, name='list_storage'),

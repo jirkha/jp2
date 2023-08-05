@@ -136,6 +136,8 @@ def item_update(response, pk):
     item.supplier = data['supplier']
     item.link = data['link']
     item.note = data['note']
+    if str(item.image) != str(data['image'])[7:]:
+        item.image = data['image']
     
     item.save()
     
@@ -148,6 +150,20 @@ def item_update(response, pk):
     
     return Response(m_ser.data)
 
+### upraví obrázek daného materiálu
+@api_view(['PATCH'])
+def item_image_patch(response, pk):
+    parser_classes = (MultiPartParser, FormParser)
+    data = response.data
+    print(data)
+    item = Item.objects.get(id=pk)
+    item.image = data['image']
+
+    ### aktualizuje pole "costs" a "stocked" u daného produktu
+    item.save(update_fields=["image"])
+
+    p_ser = MaterialSerializer(item)
+    return Response(p_ser.data)
 
 @api_view(['PUT'])
 def itemType_update(response, pk):
@@ -187,6 +203,7 @@ def item_add(request):
     item = Item.objects.create(
         name = data['name'],
         type=ItemType.objects.get(id=data['itemType']),
+        image=data['image'],
         unit=data['unit'],
         # type=ItemType.objects.get(id=data['type']['id']),
         costs=data['costs'],
@@ -386,13 +403,7 @@ class ProductView(APIView):
 
         product.name = data['name']
         product.product_type = ProductType.objects.get(id=data['product_type'])
-        #product.items = Item.objects.get(id=data['type'])
-        # print("   product.image:", product.image)
-        # print("   data['image'][6:]:", str(data['image'])[7:])
-        
-        ### zkontroluje, zda byl změne obrázek oproti původnímu
-        ### pokud ne, obrázek ponechá; pokud ano, změní ho
-        ### pokud by toto ověření nebylo, vždy se přidá "/media/" a obrázek se nebude zobrazovat korektně
+    
         if str(product.image) != str(data['image'])[7:]:
             product.image = data['image']
         
@@ -409,31 +420,6 @@ class ProductView(APIView):
         # print("   p_ser.data: ", p_ser.data)
         return Response(p_ser.data)
         # return Response(posts_serializer.data)
-    
-# @api_view(['POST'])
-# def product_add(request):
-#     data = request.data
-#     print("product_add: ",data)
-#     ### přiřadí id "items" obsažených v daném výrobku k příslušnému objektu "item"
-#     #items = ([ItemPart.objects.get(id=id) for id in data['items']])
-#     product = Product.objects.create(
-#         name=data['name'],
-#         product_type=ProductType.objects.get(id=data['product_type']),
-#         image=data['image'],
-#         price=data['price'],
-#         made=data['made'],
-#         procedure=data['procedure'],
-#         brand=data['brand'],
-#         note=data['note']
-#     )
-    
-#     ### postupně vkládá všechny item k příslušnému výrobku
-#     # for item in items:
-#     #     product.items.add(item)
-#     p_ser = ProductSerializer(product, many=False)
-#     #print("p_ser: ", p_ser)
-
-#     return Response(p_ser.data)
 
 
 @api_view(['PUT'])

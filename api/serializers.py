@@ -27,6 +27,7 @@ class MaterialTypeSerializer(ModelSerializer):
 
 class MaterialSerializer(ModelSerializer):
     type = MaterialTypeSerializer(many=False, read_only=True)
+    image = serializers.ImageField(required=False)
 
     class Meta:
         model = Item
