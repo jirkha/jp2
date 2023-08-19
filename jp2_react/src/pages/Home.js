@@ -1,93 +1,69 @@
-import { Box, Card, Link, Paper, Stack, Typography } from "@mui/material";
-import img from "../assets/jp_img_candle_opacity3.jpg";
-import img2 from "../assets/pistacie1-8.jpg";
-import img3 from "../assets/vosk_krabicka.jpg";
+import { Box, Stack, Typography } from "@mui/material";
+import img from "../assets/pistacie1-8.jpg";
 
 export default function Home() {
 
+  const primaryColor = "#1976D2";
+
   return (
     <div>
-      <Paper
+      <Stack
+        direction={{ xs: "column", md: "row" }}
+        spacing={{ xs: 1, sm: 2 }}
         sx={{
-          backgroundImage: `url(${img})`,
-          //backgroundSize:"cover",
-          m: 0,
-          minHeight: "100vh",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          // opacity: 0.3,
-          // position: "relative",
-          //display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          zIndex: -1,
+          mt: {
+            sm: 10,
+            xs: 2,
+          },
+          m: 2,
         }}
       >
-        <Typography color="primary" variant="h4" sx={{ p: 2, pt:6 }}>
-          <span style={{ backgroundColor: "aliceblue" }}>
+        <Box>
+          <Typography
+            color="black"
+            variant="h4"
+            sx={{
+              p: 2,
+              //, textShadow: `2px 2px 4px ${primaryColor}`
+            }}
+          >
+            {/* <span style={{ backgroundColor: "aliceblue" }}> */}
             Vítejte ve zkušební verzi
-          </span>
-        </Typography>
+            {/* </span> */}
+          </Typography>
 
-        <Typography
-          variant="h2"
-          color="primary"
-          sx={{ p: 2 }}
-          //align="center" //zarovná doprostřed
-          gutterBottom //vytvoří mezeru pod textem
-        >
-          <span style={{ backgroundColor: "aliceblue" }}>
+          <Typography
+            variant="h2"
+            color="black"
+            sx={{ p: 2 }}
+            gutterBottom //vytvoří mezeru pod textem
+          >
             <strong>Podnikový systém</strong>
-          </span>
-        </Typography>
-        <Typography color="primary" variant="h5" sx={{ p: 2 }}>
-          <span style={{ backgroundColor: "aliceblue" }}>
+          </Typography>
+          <Typography color="black" variant="h6" sx={{ p: 2 }}>
             Pokračujte výběrem libovolné sekce a zkuste přidat materiál,
             produkt, prodejní kanál. Poté můžete vložit transakce, podívat se na
             statistiku a další.
-          </span>
-        </Typography>
-        <Typography color="primary" variant="h5" sx={{ p: 2 }}>
-          <span style={{ backgroundColor: "aliceblue" }}>
+          </Typography>
+          <Typography color="black" variant="h6" sx={{ p: 2 }}>
             Pokud se chcete dozvědět více o tvůrci této aplikace, navštivte{" "}
             <a href="https://www.jirivecko.cz">www.jirivecko.cz</a>.
-          </span>
-        </Typography>
-        <Stack
-          direction={{ sm: "column", md: "row" }}
-          spacing={{ xs: 1, sm: 2, md: 6 }}
-          sx={{ mt: 3 }}
-          justifyContent="space-between"
+          </Typography>
+
+          <Typography variant="h6" sx={{ p: 2, color: "error.main" }}>
+            Verze slouží pouze k prezentačním účelům
+          </Typography>
+        </Box>
+        <Box
+          height="100%"
+          display="flex"
+          justifyContent="center"
+          flexDirection="column"
+          alignItems="center"
         >
-          {/* <Box
-            height="100%"
-            display="flex"
-            justifyContent="center"
-            flexDirection="column"
-          >
-            <img src={img3} width="261" height="191" alt="img3" />
-          </Box>
-          <Box
-            height="100%"
-            display="flex"
-            justifyContent="center"
-            flexDirection="column"
-          >
-            <img src={img} width="261" height="191" alt="img" />
-          </Box>
-          <Box
-            height="100%"
-            display="flex"
-            justifyContent="center"
-            flexDirection="column"
-          >
-            <img src={img2} width="261" height="191" alt="img2" />
-          </Box> */}
-        </Stack>
-        <Typography variant="h6" sx={{ p: 2, color: "error.main" }}>
-           <span style={{ backgroundColor: "aliceblue" }}>Verze slouží pouze k prezentačním účelům</span>
-        </Typography>
-      </Paper>
+          <img src={img} width="522" height="382" alt="img2" />
+        </Box>
+      </Stack>
       {/* <Box
         component="img"
         src={img}

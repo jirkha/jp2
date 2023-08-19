@@ -47,6 +47,8 @@ class ItemView(APIView):
 def list_items(response):
     # mt = ItemType.objects.all()
     m = Item.objects.all().order_by("name")
+    # from . ai import ai_loader
+    # ai_loader()
     # st = Storage.objects.all()
     # r = Removal.objects.all()
 

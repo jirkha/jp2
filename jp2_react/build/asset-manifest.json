@@ -1,18 +1,16 @@
 {
   "files": {
     "main.css": "/static/css/main.75c4fed9.css",
-    "main.js": "/static/js/main.2d9948a9.js",
-    "static/media/jp_img_candle_opacity3.jpg": "/static/media/jp_img_candle_opacity3.bfc6e840752be555b673.jpg",
+    "main.js": "/static/js/main.c6ebbbc2.js",
     "static/media/portrait_jiri_vecko_cut_width.jpg": "/static/media/portrait_jiri_vecko_cut_width.6456ffa41567ac06feef.jpg",
-    "static/media/vosk_krabicka.jpg": "/static/media/vosk_krabicka.f3304700259fd86d5b9e.jpg",
     "static/media/pistacie1-8.jpg": "/static/media/pistacie1-8.34061d9dbfc2ccdca1dd.jpg",
     "static/media/JP_logo_white_small.png": "/static/media/JP_logo_white_small.ece9c8f49a86ace37ca3.png",
     "index.html": "/index.html",
     "main.75c4fed9.css.map": "/static/css/main.75c4fed9.css.map",
-    "main.2d9948a9.js.map": "/static/js/main.2d9948a9.js.map"
+    "main.c6ebbbc2.js.map": "/static/js/main.c6ebbbc2.js.map"
   },
   "entrypoints": [
     "static/css/main.75c4fed9.css",
-    "static/js/main.2d9948a9.js"
+    "static/js/main.c6ebbbc2.js"
   ]
 }
