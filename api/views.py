@@ -59,7 +59,7 @@ def list_items(response):
     id_p = Item.objects.values('id')
     ### prochází jednotlivé items dle "id"
     for item in id_p:
-        # print("item:", item)
+        #print("item:", item)
         ### z naskladnění seskupených dle "id" item vypočte celkový počet naskladněného materiálu
         stor = Storage.objects.filter(item__id=item['id']).values(
             'item').annotate(sum=Sum('quantity_of_material')).values('sum')
@@ -72,7 +72,7 @@ def list_items(response):
             it1 = Item.objects.get(id=item['id'])
             ### uloží počet naskladněného materiálu
             stor1 = stor[0]['sum']
-            # print("stor1", stor1)
+            #print("stor1", stor1)
             ### zjistí, zda je u daného "item" uskutečněné vyskladnění (removal)
             if len(unstor) > 0:
                 ### uloží počet vyskladněného materiálu
@@ -94,6 +94,12 @@ def list_items(response):
                 ### spočítá a uloží aktuální hodnotu naskladněného materiálu
                 it1.value = stor1 * it1.costs
                 it1.save(update_fields=["quantity_of_material", "value"])
+        else:
+            # protože nebyl naskladněn daný materiál, vypíše nulové množství i hodnotu
+            it1 = Item.objects.get(id=item['id'])
+            it1.quantity_of_material = 0
+            it1.value = 0
+            it1.save(update_fields=["quantity_of_material", "value"])
 
     m_ser = MaterialSerializer(m, many=True)
 

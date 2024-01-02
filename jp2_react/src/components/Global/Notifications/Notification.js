@@ -15,7 +15,7 @@ function Notification(props) {
   return (
     <Snackbar
       open={notify.isOpen}
-      autoHideDuration={6000} //bude otevřeno po dobu 4 sec
+      autoHideDuration={7000} //bude otevřeno po dobu 7 sec
       anchorOrigin={{ vertical: "top", horizontal: "center" }} //umístí notifikaci do horní části stránky uprostřed
       onClose={handleClose}
     >

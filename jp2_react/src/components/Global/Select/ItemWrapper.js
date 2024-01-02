@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { TextField, MenuItem } from "@mui/material";
+import { TextField, MenuItem, Typography } from "@mui/material";
 import { useField, useFormikContext } from "formik";
 import Axios from "axios";
 
@@ -21,12 +21,14 @@ const ItemWrapper = ({ name, options, ...otherProps }) => {
 
 
   const [item, setItem] = useState([]);
+  const [process, setProcess] = useState(true)
 
   useEffect(() => {
     Axios.get("/api/items/")
       .then((res) => {
         console.log("Material: ", res.data);
         setItem(res.data);
+        setProcess(false)
       })
       .catch((err) => console.log(err));
   }, []);
@@ -54,21 +56,20 @@ const ItemWrapper = ({ name, options, ...otherProps }) => {
   return (
     <>
       <TextField {...configSelect}>
+        {process && <Typography>*** Chvilku strpení, prosím ***</Typography>}
         {item.map((opt, index) => {
           return (
-            (
-              <MenuItem key={index} value={opt.id}>
-                {opt.name}
-                {" ("}
-                {opt.costs}
-                {" Kč)"}
-              </MenuItem>
-            )
+            <MenuItem key={index} value={opt.id}>
+              {opt.name}
+              {" ("}
+              {opt.costs}
+              {" Kč)"}
+            </MenuItem>
           );
         })}
       </TextField>
-      </>
-      );
+    </>
+  );
 };
 
 export default ItemWrapper;

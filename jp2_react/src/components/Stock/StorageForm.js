@@ -47,12 +47,16 @@ useEffect(() => {
     note: Yup.string(),
   });
 
-  const initialValues = {
-    day_of_storage: "",
-    item: "",
-    quantity_of_material: "",
-    note: "",
-  };
+const currentDate = new Date();
+const formattedDate = currentDate.toISOString().split("T")[0]; // Získání aktuálního data ve formátu YYYY-MM-DD
+
+const initialValues = {
+  day_of_storage: formattedDate,
+  item: "",
+  quantity_of_material: "",
+  note: "",
+};
+
 
   const navigate = useNavigate();
 
