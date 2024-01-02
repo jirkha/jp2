@@ -57,7 +57,7 @@ function TableRemoval() {
         openPopup={openPopup}
         setOpenPopup={setOpenPopup}
       >
-        <RemovalForm setOpenPopup={setOpenPopup} />
+        <RemovalForm setOpenPopup={setOpenPopup} setNotify={setNotify} />
       </Popup>
       <Notification notify={notify} setNotify={setNotify} />
     </div>

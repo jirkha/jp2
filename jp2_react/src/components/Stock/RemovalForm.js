@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import * as Yup from "yup";
 import { Formik, Form } from "formik";
 import Axios from "axios";
 import TextField from "../Global/Textfield";
 import DateTimePicker from "../Global/DateTimePicker/DateTimePicker";
-import Notification from "../Global/Notifications/Notification";
-
 import ItemWrapper from "../Global/Select/ItemWrapper";
 import { useDispatch, useSelector } from "react-redux";
 import { getRemoval } from "../Store/Features/Material/removalSlice";
@@ -23,8 +21,8 @@ import { ShowValue } from "../Global/Utils/showValue";
 const RemovalForm = (props) => {
   const dispatch = useDispatch();
   const item = useSelector((state) => state.material.data);
-  const { setOpenPopup } = props;
-  const [notify, setNotify] = useState({ isOpen: false, message: "", type: "" });
+  const { setOpenPopup, setNotify } = props;
+
 
   useEffect(() => {
     dispatch(getMaterial());
@@ -46,12 +44,16 @@ const RemovalForm = (props) => {
     note: Yup.string(),
   });
 
+  const currentDate = new Date();
+  const formattedDate = currentDate.toISOString().split("T")[0]; // Získání aktuálního data ve formátu YYYY-MM-DD
+
   const initialValues = {
-    day_of_removal: "",
+    day_of_removal: formattedDate,
     item: "",
     quantity_of_material: "",
     note: "",
   };
+
 
   const onSubmit = (values) => {
     const { day_of_removal, item, quantity_of_material, note } = values;
@@ -65,7 +67,7 @@ const RemovalForm = (props) => {
         console.log("Adding Removal: ", res);
         setNotify({
           isOpen: true,
-          message: "Vyskladnění bylo úspěšné",
+          message: "Vyskladnění proběhlo úspěšně.",
           type: "success",
         });
         dispatch(getRemoval());
@@ -74,7 +76,7 @@ const RemovalForm = (props) => {
         console.log(err.response.data);
         setNotify({
           isOpen: true,
-          message: err.response.data,
+          message: "Vyskytla se chyba. Vyskladnění nebylo provedeno!",
           type: "error",
         });
       });
@@ -206,7 +208,6 @@ const RemovalForm = (props) => {
           </Form>
         )}
       </Formik>
-      <Notification notify={notify} setNotify={setNotify} />
     </>
   );
 };

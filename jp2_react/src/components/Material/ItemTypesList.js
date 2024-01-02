@@ -91,9 +91,21 @@ function ItemTypesList() {
             Přidat novou kategorii materiálu
           </Button>
         </Stack>
-        <Grid container spacing={{ xs: 2, md: 2 }}>
+        <Grid
+          container
+          alignItems="stretch"
+          spacing={{ xs: 2, md: 2 }}
+        >
           {materialType.map((type) => (
-            <Grid item xs={6} sm={5} md={3} lg={2} key={type.id}>
+            <Grid
+              item
+              xs={6}
+              sm={5}
+              md={3}
+              lg={2}
+              key={type.id}
+              style={{ height: "100%" }}
+            >
               {/* <Paper elevation={2}> */}
               <BasicCard
                 typeItem="Kategorie materiálu"

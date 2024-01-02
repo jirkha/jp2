@@ -10,7 +10,7 @@ import Typography from "@mui/material/Typography";
 function BasicCard({ typeItem, type, typeCount, ...props }) {
 
   return (
-    <Card sx={{ minWidth: 80 }}>
+    <Card sx={{ minWidth: 80, minHeight: 200 }}>
       <CardContent>
         {/* <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           {typeItem}
@@ -25,7 +25,7 @@ function BasicCard({ typeItem, type, typeCount, ...props }) {
         )}
         {/* {{ type.note } !== "" && <Typography variant="body2">{type.note}</Typography>} */}
       </CardContent>
-      <CardActions>
+      <CardActions sx={{ justifyContent: "flex-end" }}>
         <Button
           //disabled
           size="small"
