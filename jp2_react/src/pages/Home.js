@@ -3,8 +3,6 @@ import img from "../assets/pistacie1-8.jpg";
 
 export default function Home() {
 
-  const primaryColor = "#1976D2";
-
   return (
     <div>
       <Stack
@@ -12,7 +10,7 @@ export default function Home() {
         spacing={{ xs: 1, sm: 2 }}
         sx={{
           mt: {
-            sm: 10,
+            sm: 8,
             xs: 2,
           },
           m: 2,
@@ -21,36 +19,28 @@ export default function Home() {
         <Box>
           <Typography
             color="black"
-            variant="h4"
+            variant="h5"
             sx={{
               p: 2,
-              //, textShadow: `2px 2px 4px ${primaryColor}`
             }}
           >
-            {/* <span style={{ backgroundColor: "aliceblue" }}> */}
             Vítejte ve zkušební verzi
-            {/* </span> */}
           </Typography>
 
-          <Typography
-            variant="h2"
-            color="black"
-            sx={{ p: 2 }}
-            gutterBottom //vytvoří mezeru pod textem
-          >
+          <Typography variant="h3" color="black" sx={{ p: 2 }} gutterBottom>
             <strong>Podnikový systém</strong>
           </Typography>
-          <Typography color="black" variant="h6" sx={{ p: 2 }}>
+          <Typography color="black" variant="body1" sx={{ p: 2 }}>
             Pokračujte výběrem libovolné sekce a zkuste přidat materiál,
             produkt, prodejní kanál. Poté můžete vložit transakce, podívat se na
             statistiku a další.
           </Typography>
-          <Typography color="black" variant="h6" sx={{ p: 2 }}>
+          <Typography color="black" variant="body1" sx={{ p: 2 }}>
             Pokud se chcete dozvědět více o tvůrci této aplikace, navštivte{" "}
             <a href="https://www.jirivecko.cz">www.jirivecko.cz</a>.
           </Typography>
 
-          <Typography variant="h6" sx={{ p: 2, color: "error.main" }}>
+          <Typography variant="body1" sx={{ p: 2, color: "error.main" }}>
             Verze slouží pouze k prezentačním účelům
           </Typography>
         </Box>
@@ -64,23 +54,6 @@ export default function Home() {
           <img src={img} width="522" height="382" alt="img2" />
         </Box>
       </Stack>
-      {/* <Box
-        component="img"
-        src={img}
-        //sx={{ width: "4%", minWidth: 55 }}
-        sx={{
-          m: 0,
-          opacity: 0.3,
-          position: "relative",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          zIndex: -1,
-          height: "100vh",
-        }}
-        //width="55px"
-        alt="Logo"
-      ></Box> */}
     </div>
   );
 }
