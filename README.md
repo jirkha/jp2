@@ -4,7 +4,7 @@
 
 **A web application created for the J&P CANDLES company. It can also be used by other self-employed individuals or small businesses.**
 
-This web application consist of **six modules**: 
+This web application consists of **six modules**: 
 1. Items / Materiál
 2. Storage / Sklad
 3. Sales / Prodejní kanály
