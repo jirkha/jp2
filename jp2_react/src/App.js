@@ -56,46 +56,41 @@ function App() {
   return (
     <>
       {/* {isAuthenticated && ( */}
-        <ConfirmProvider>
-          {/* <Router> */}
-          {/* <main className="py-3"> */}
-            <NavbarJP />
-            <Routes>
-              <Route path="/" element={<Home />}></Route>
-              <Route path="/material" element={<ListMaterialPage />}></Route>
-              <Route
-                path="/material/:materialId"
-                element={<MaterialPage />}
-              ></Route>
-              <Route path="/stock" element={<StockPage />}></Route>
-              <Route path="/product" element={<ListProductPage />}></Route>
-              <Route
-                path="/product_detail/:productId"
-                element={<ProductDetailPage />}
-              ></Route>
-              <Route
-                path="/transaction"
-                element={<ListTransactionPage />}
-              ></Route>
-              <Route
-                path="/sales_statistic"
-                element={<SalesStatisticPage />}
-              ></Route>
-              <Route path="/sale" element={<SalePage />}></Route>
-              <Route
-                path="/sale_detail/:saleId"
-                element={<SaleDetailPage />}
-              ></Route>
-              <Route
-                path="/aboutme"
-                element={<AboutMePage />}
-              ></Route>
-            </Routes>
-          {/* </main> */}
+      <ConfirmProvider>
+        {/* <Router> */}
+        {/* <main className="py-3"> */}
+        <NavbarJP />
+        <Routes>
+          <Route path="/about" element={<Home />}></Route>
+          <Route path="/" element={<ListMaterialPage />}></Route>
+          <Route path="/material" element={<ListMaterialPage />}></Route>
+          <Route
+            path="/material/:materialId"
+            element={<MaterialPage />}
+          ></Route>
+          <Route path="/stock" element={<StockPage />}></Route>
+          <Route path="/product" element={<ListProductPage />}></Route>
+          <Route
+            path="/product_detail/:productId"
+            element={<ProductDetailPage />}
+          ></Route>
+          <Route path="/transaction" element={<ListTransactionPage />}></Route>
+          <Route
+            path="/sales_statistic"
+            element={<SalesStatisticPage />}
+          ></Route>
+          <Route path="/sale" element={<SalePage />}></Route>
+          <Route
+            path="/sale_detail/:saleId"
+            element={<SaleDetailPage />}
+          ></Route>
+          <Route path="/aboutme" element={<AboutMePage />}></Route>
+        </Routes>
+        {/* </main> */}
 
-          <Footer />
-          {/* </Router> */}
-        </ConfirmProvider>
+        <Footer />
+        {/* </Router> */}
+      </ConfirmProvider>
       {/* )}{" "} */}
     </>
   );

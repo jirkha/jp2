@@ -16,7 +16,6 @@ const MaterialPage = () => {
   const [title, setTitle] = useState("Vložení nového materiálu");
   let {materialId} = useParams();
     let [material, setMaterial] = useState(null)
-    // console.log({material.updated})
 
     useEffect(()=> {
         getMaterialDetail()

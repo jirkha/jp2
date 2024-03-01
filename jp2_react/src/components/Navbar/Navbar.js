@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button, Link, Stack } from "@mui/material";
-// import makeStyles from "@mui/styles/makeStyles";
 import { AppBar } from "@mui/material";
 import { Toolbar } from "@mui/material";
 import { Container } from "@mui/material";
-// import {Avatar} from "@mui/material";
 import { Box } from "@mui/material";
 import { IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -15,7 +13,8 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { List } from "@mui/material";
 import { ListItem } from "@mui/material";
 import logo from "../../assets/JP_logo_white_small.png";
-import LogoutButton from "../Global/Login/LogoutButton";
+import git from "../../assets/github-logo.png";
+import "./navbar.css"
 
 const navigationLinks = [
   { name: "Materiál", href: "/material" },
@@ -48,7 +47,7 @@ export default function NavbarJP() {
             aria-label="Logo"
             sx={{ mr: 2 }}
           >
-            <Link href="/">
+            <Link href="/about">
               <img
                 src={logo}
                 width="100"
@@ -57,6 +56,18 @@ export default function NavbarJP() {
               />
             </Link>
           </IconButton>
+          <Stack direction="row">
+            <img src={git} alt="GitHub Logo" height="30" />
+            <a
+              href="https://github.com/jirkha/jp2"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="my-link"
+            >
+              GITHUB
+            </a>
+          </Stack>
+
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <Stack
               direction="row"
@@ -65,6 +76,7 @@ export default function NavbarJP() {
               spacing={4}
             >
               {navigationLinks.map((item) => (
+                //<a href={item.href}>
                 <Link
                   //className={styles.link}
                   //indicatorColor="secondary"
@@ -97,6 +109,7 @@ export default function NavbarJP() {
                 >
                   {item.name}
                 </Link>
+                //</a>
               ))}
             </Stack>
           </Box>

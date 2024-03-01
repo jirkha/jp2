@@ -1,64 +1,20 @@
-/* * {
-    box-sizing: border-box;
-
-}
-
-body {
-    margin: 0;
-}
-
-.container {
-    margin: 1rem;
-    text-align: center;
-}
-
-.nav {
-    background-color: rgba(16, 167, 226, 0.916);
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    position: sticky;
-    gap: 2rem;
-    top: 0;
-    z-index: 10;
-    padding: 0 1rem;
-
-    @media screen and (max-width: 960px) {
-        transition: 0.8s all ease;
-    }
-}
-
-.site-title {
-    font-size: 2rem;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-.nav ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-}
-
-.nav a {
-    color: inherit;
+.my-link {
+    margin-right: 2px;
+    padding: 8px;
+    /* Odsazení okraje od obsahu */
+    font-size: 15px;
+    /* Velikost textu */
+    color: rgb(255, 255, 255);
+    /* Barva písma */
     text-decoration: none;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    padding: .25rem;
+    /* Zabraňte standardnímu podtržení odkazu */
+    transition: color 0.3s, border-color 0.3s;
+    /* Přechodový efekt pro plynulou změnu barvy a okrajů */
+    font-family: "Roboto"
+        /* Nastavení písma podobného Material-UI Link */
 }
 
-.nav li.active {
-    background-color: rgb(17, 105, 238);
+.my-link:hover {
+    text-decoration: underline;
+    /* Podtržení při najetí kurzoru */
 }
-
-.nav li:hover {
-    background-color: #777;
-} */
