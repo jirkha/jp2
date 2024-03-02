@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/static/css/main.6adeb6e1.css",
-    "main.js": "/static/js/main.02d1b5e1.js",
+    "main.js": "/static/js/main.fb6088ab.js",
     "static/media/pistacie1-8.jpg": "/static/media/pistacie1-8.34061d9dbfc2ccdca1dd.jpg",
     "static/media/github-logo.png": "/static/media/github-logo.8529ab6a259d6b42cb54.png",
     "static/media/JP_logo_white_small.png": "/static/media/JP_logo_white_small.ece9c8f49a86ace37ca3.png",
     "index.html": "/index.html",
     "main.6adeb6e1.css.map": "/static/css/main.6adeb6e1.css.map",
-    "main.02d1b5e1.js.map": "/static/js/main.02d1b5e1.js.map"
+    "main.fb6088ab.js.map": "/static/js/main.fb6088ab.js.map"
   },
   "entrypoints": [
     "static/css/main.6adeb6e1.css",
-    "static/js/main.02d1b5e1.js"
+    "static/js/main.fb6088ab.js"
   ]
 }

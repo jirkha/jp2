@@ -43,7 +43,7 @@ export default function NavbarJP() {
             aria-label="Logo"
             sx={{ mr: 2 }}
           >
-            <Link href="/about">
+            <Link href="/">
               <img
                 src={logo}
                 width="100"

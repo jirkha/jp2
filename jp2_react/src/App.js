@@ -56,11 +56,10 @@ function App() {
       {/* {isAuthenticated && ( */}
       <ConfirmProvider>
         {/* <Router> */}
-        {/* <main className="py-3"> */}
         <NavbarJP />
         <Routes>
           <Route path="/" element={<ListMaterialPage />}></Route>
-          <Route path="/about" element={<Home />}></Route>
+          {/* <Route path="/about" element={<Home />}></Route> */}
           <Route path="/material" element={<ListMaterialPage />}></Route>
           <Route
             path="/material/:materialId"
@@ -84,7 +83,6 @@ function App() {
           ></Route>
           {/* <Route path="/aboutme" element={<AboutMePage />}></Route> */}
         </Routes>
-        {/* </main> */}
 
         <Footer />
         {/* </Router> */}
