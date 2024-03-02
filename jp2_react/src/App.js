@@ -3,7 +3,6 @@ import {
   //HashRouter as Router,
   Routes,
   Route,
-  //useParams
 } from "react-router-dom";
 //import Login from "./components/Global/Login/Login";
 // import LoginButton from "./components/Global/Login/LoginButton"
@@ -26,7 +25,6 @@ import Footer from "./components/Footer";
 import ListTransactionPage from "./pages/ListTransactionPage";
 import SalePage from "./pages/SalePage";
 import SaleDetailPage from "./pages/SaleDetailPage";
-import AboutMePage from "./pages/AboutMePage";
 
 function App() {
 
@@ -61,8 +59,8 @@ function App() {
         {/* <main className="py-3"> */}
         <NavbarJP />
         <Routes>
-          <Route path="/about" element={<Home />}></Route>
           <Route path="/" element={<ListMaterialPage />}></Route>
+          <Route path="/about" element={<Home />}></Route>
           <Route path="/material" element={<ListMaterialPage />}></Route>
           <Route
             path="/material/:materialId"
@@ -84,7 +82,7 @@ function App() {
             path="/sale_detail/:saleId"
             element={<SaleDetailPage />}
           ></Route>
-          <Route path="/aboutme" element={<AboutMePage />}></Route>
+          {/* <Route path="/aboutme" element={<AboutMePage />}></Route> */}
         </Routes>
         {/* </main> */}
 
