@@ -9,7 +9,6 @@ function ListMaterialPage() {
   return (
     <div>
       <Container component="section" id="itemList">
-        {/* <HeaderPage> */}
         <Typography
           variant="h2"
           sx={{ mt: 3 }} //mezera nad textem
@@ -19,17 +18,10 @@ function ListMaterialPage() {
         >
          Materiál
         </Typography>
-        {/* </HeaderPage> */}
         <TableItem />
-        {/* </Container> */}
       </Container>
-      {/*</div> */}
 
-      {/* <section id="itemForm"> */}
-
-      {/* <div className="notes"> */}
       <Container component="section" id="itemForm">
-        {/*<FormContainer> */}
         <Typography
           variant="h3"
           sx={{ mt: 5 }} //mezera nad textem
@@ -42,10 +34,7 @@ function ListMaterialPage() {
         <Stack sx={{ justifyContent: "center" }} direction="row">
           <ItemTypesList />
         </Stack>
-
-        {/* </FormContainer>*/}
       </Container>
-      {/* </section> */}
     </div>
   );
 }
