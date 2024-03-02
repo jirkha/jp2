@@ -1,17 +1,10 @@
 .my-link {
-    margin-right: 2px;
-    padding: 8px;
-    /* Odsazení okraje od obsahu */
-    font-size: 15px;
-    /* Velikost textu */
+ 
     color: rgb(255, 255, 255);
     /* Barva písma */
     text-decoration: none;
     /* Zabraňte standardnímu podtržení odkazu */
-    transition: color 0.3s, border-color 0.3s;
-    /* Přechodový efekt pro plynulou změnu barvy a okrajů */
-    font-family: "Roboto"
-        /* Nastavení písma podobného Material-UI Link */
+
 }
 
 .my-link:hover {

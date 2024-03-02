@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Button, Link, Stack } from "@mui/material";
+import { Link, Stack, Typography } from "@mui/material";
 import { AppBar } from "@mui/material";
-import { Toolbar } from "@mui/material";
 import { Container } from "@mui/material";
-import { Box } from "@mui/material";
-import { IconButton } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { SwipeableDrawer } from "@mui/material";
 import { Divider } from "@mui/material";
@@ -33,7 +31,6 @@ export default function NavbarJP() {
   return (
     <AppBar position="sticky">
       <Container maxWidth="lg">
-        {/* <Toolbar disableGutters> */}
         <Stack
           direction="row"
           justifyContent="space-between"
@@ -41,7 +38,6 @@ export default function NavbarJP() {
           spacing={2}
         >
           <IconButton
-            //size="large"
             edge="start"
             color="inherit"
             aria-label="Logo"
@@ -51,35 +47,20 @@ export default function NavbarJP() {
               <img
                 src={logo}
                 width="100"
-                //height="35"
                 alt="Logo"
               />
             </Link>
           </IconButton>
-          <Stack direction="row">
-            <img src={git} alt="GitHub Logo" height="30" />
-            <a
-              href="https://github.com/jirkha/jp2"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="my-link"
-            >
-              GITHUB
-            </a>
-          </Stack>
 
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ display: { xs: "none", lg: "flex" } }}>
             <Stack
               direction="row"
               justifyContent="space-between"
               alignItems="center"
-              spacing={4}
+              spacing={5}
             >
               {navigationLinks.map((item) => (
-                //<a href={item.href}>
                 <Link
-                  //className={styles.link}
-                  //indicatorColor="secondary"
                   component="button"
                   key={item.name}
                   sx={
@@ -97,7 +78,6 @@ export default function NavbarJP() {
                           marginRight: 2,
                         }
                   }
-                  //color="inherit"
                   variant="button"
                   underline="hover"
                   href={item.href}
@@ -109,21 +89,32 @@ export default function NavbarJP() {
                 >
                   {item.name}
                 </Link>
-                //</a>
               ))}
             </Stack>
           </Box>
+          <Box sx={{ bgcolor: "black", p: 1, px: 2, borderRadius: 4 }}>
+            <a
+              href="https://github.com/jirkha/jp2"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="my-link"
+            >
+              {" "}
+              <Stack direction="row" spacing={1} alignItems="center">
+                <img src={git} alt="GitHub Logo" height="30" />
+                <Typography sx={{ fontWeight: "bold", fontSize: 15 }}>
+                  GITHUB
+                </Typography>
+              </Stack>
+            </a>
+          </Box>
 
-          <Box sx={{ display: { xs: "block", md: "none" } }}>
+          <Box sx={{ display: { xs: "block", lg: "none" } }}>
             <IconButton color="inherit" onClick={() => setOpen(true)}>
               <MenuIcon />
             </IconButton>
           </Box>
-          {/* <Box sx={{ maxWidth: 3, display: { xs: "none", md: "inline" } }}>
-            <LogoutButton />
-          </Box> */}
         </Stack>
-        {/* </Toolbar> */}
       </Container>
 
       <SwipeableDrawer
