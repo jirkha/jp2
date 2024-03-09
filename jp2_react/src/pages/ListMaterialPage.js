@@ -1,5 +1,6 @@
 import React from 'react'
 import TableItem from '../components/Material/TableItem'
+import About from "../components/Global/Other/About";
 import { Container, Typography, Stack } from "@mui/material";
 import ItemTypesList from '../components/Material/ItemTypesList';
 
@@ -8,15 +9,15 @@ function ListMaterialPage() {
 
   return (
     <div>
+      <About />
       <Container component="section" id="itemList">
         <Typography
-          variant="h2"
-          sx={{ mt: 3 }} //mezera nad textem
+          variant="h3"
+          sx={{ mt: 2 }} //mezera nad textem
           color="primary"
           align="center" //zarovná doprostřed
-          gutterBottom //vytvoří mezeru pod textem
         >
-         Materiál
+          <strong>Materiál</strong>
         </Typography>
         <TableItem />
       </Container>

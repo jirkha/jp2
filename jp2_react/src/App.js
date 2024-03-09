@@ -13,6 +13,7 @@ import { ConfirmProvider } from "material-ui-confirm"; //umožňuje přidat potv
 
 import "./";
 import icon from "./assets/images/favicon.ico"
+import image from "./assets/images/og_image.png";
 import ListMaterialPage from "./pages/ListMaterialPage";
 import MaterialPage from "./pages/MaterialPage";
 import StockPage from "./pages/StockPage";
@@ -55,6 +56,8 @@ function App() {
   useEffect(() => {
     const favicon = document.getElementById("favicon");
     favicon.setAttribute("href", icon);
+    const ogImage = document.getElementById("ogImage");
+    ogImage.setAttribute("href", image);
   }, []);
 
   return (
