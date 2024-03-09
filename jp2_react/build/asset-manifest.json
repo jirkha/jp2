@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.6adeb6e1.css",
-    "main.js": "/static/js/main.bd32ac31.js",
+    "main.js": "/static/js/main.7d7fab96.js",
     "static/media/pistacie1-8.jpg": "/static/media/pistacie1-8.34061d9dbfc2ccdca1dd.jpg",
     "static/media/github-logo.png": "/static/media/github-logo.8529ab6a259d6b42cb54.png",
     "static/media/og_image.png": "/static/media/og_image.eee84875f2acbbbbecb7.png",
@@ -11,10 +11,10 @@
     "static/media/favicon.ico": "/static/media/favicon.4cfdb8fbf2b4aad55895.ico",
     "index.html": "/index.html",
     "main.6adeb6e1.css.map": "/static/css/main.6adeb6e1.css.map",
-    "main.bd32ac31.js.map": "/static/js/main.bd32ac31.js.map"
+    "main.7d7fab96.js.map": "/static/js/main.7d7fab96.js.map"
   },
   "entrypoints": [
     "static/css/main.6adeb6e1.css",
-    "static/js/main.bd32ac31.js"
+    "static/js/main.7d7fab96.js"
   ]
 }

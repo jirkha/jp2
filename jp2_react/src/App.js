@@ -57,7 +57,7 @@ function App() {
     const favicon = document.getElementById("favicon");
     favicon.setAttribute("href", icon);
     const ogImage = document.getElementById("ogImage");
-    ogImage.setAttribute("href", image);
+    ogImage.setAttribute("content", image);
   }, []);
 
   return (
