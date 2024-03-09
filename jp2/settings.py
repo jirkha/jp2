@@ -160,6 +160,8 @@ STATICFILES_DIRS = [
     # os.path.join(PROJECT_ROOT, 'static'),
 ]
 
+print("BASE_DIR", BASE_DIR)
+
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',    #causes verbose duplicate notifications in django 1.9
