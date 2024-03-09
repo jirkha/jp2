@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   //HashRouter as Router,
   Routes,
@@ -12,6 +12,7 @@ import { Container, Typography, IconButton, Link } from "@mui/material";
 import { ConfirmProvider } from "material-ui-confirm"; //umožňuje přidat potvrzovací okna
 
 import "./";
+import icon from "./assets/images/favicon.ico"
 import ListMaterialPage from "./pages/ListMaterialPage";
 import MaterialPage from "./pages/MaterialPage";
 import StockPage from "./pages/StockPage";
@@ -50,6 +51,11 @@ function App() {
   //     </div>
   //   );
   // }
+
+  useEffect(() => {
+    const favicon = document.getElementById("favicon");
+    favicon.setAttribute("href", icon);
+  }, []);
 
   return (
     <>
