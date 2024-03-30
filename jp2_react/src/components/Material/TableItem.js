@@ -6,9 +6,9 @@ import { getMaterial } from "../Store/Features/Material/materialSlice";
 import { Popup } from "../Global/Other/Popup";
 import AddItemForm from "./AddItemForm";
 
-function TableItem() {
+function TableItem({ category, setCategory }) {
   const [openPopup, setOpenPopup] = useState(false);
-  const [item, setItem] = useState(undefined)
+  const [item, setItem] = useState(undefined);
   const [title, setTitle] = useState("Vložení nového materiálu");
 
   useEffect(() => {
@@ -43,6 +43,8 @@ function TableItem() {
           name="materiál"
           editAction={editAction}
           addAction={addAction}
+          category={category}
+          setCategory={setCategory}
         />
       )}
       <Popup title={title} openPopup={openPopup} setOpenPopup={setOpenPopup}>

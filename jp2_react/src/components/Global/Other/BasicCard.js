@@ -1,23 +1,35 @@
-import React from 'react'
-
+import React from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-
 function BasicCard({ typeItem, type, typeCount, ...props }) {
 
+  const { setCategory } = props;
   return (
     <Card sx={{ minWidth: 80, minHeight: 200 }}>
       <CardContent>
-        {/* <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          {typeItem}
-        </Typography> */}
-        <Typography color="primary.main" variant="h5" component="div">
+        {/* <button> */}
+        <Typography
+          color="primary.main"
+          variant="h5"
+          component="div"
+          style={typeItem === "Kategorie materiálu" ? { cursor: "pointer" } : {}}
+          onClick={() => {
+            if (typeItem === "Kategorie materiálu") {
+              setCategory(type.name);
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              });
+            }
+          }}
+        >
           {type.name}
         </Typography>
+        {/* </button> */}
         {typeCount >= 0 && (
           <Typography color="text.secondary">
             Počet položek: {typeCount}

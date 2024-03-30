@@ -1,17 +1,13 @@
-import React from 'react'
-import TableItem from '../components/Material/TableItem'
+import React, { useState } from "react";
+import TableItem from "../components/Material/TableItem";
 import { Container, Typography, Stack } from "@mui/material";
-import ItemTypesList from '../components/Material/ItemTypesList';
-import TestApi from '../components/Global/TestApi';
-
+import ItemTypesList from "../components/Material/ItemTypesList";
 
 function ListMaterialPage() {
-
+  const [category, setCategory] = useState("");
   return (
     <div>
-      <TestApi/>
       <Container component="section" id="itemList">
-        {/* <HeaderPage> */}
         <Typography
           variant="h2"
           sx={{ mt: 3 }} //mezera nad textem
@@ -19,19 +15,12 @@ function ListMaterialPage() {
           align="center" //zarovná doprostřed
           gutterBottom //vytvoří mezeru pod textem
         >
-         Materiál
+          Materiál
         </Typography>
-        {/* </HeaderPage> */}
-        <TableItem />
-        {/* </Container> */}
+        <TableItem category={category} setCategory={setCategory} />
       </Container>
-      {/*</div> */}
 
-      {/* <section id="itemForm"> */}
-
-      {/* <div className="notes"> */}
       <Container component="section" id="itemForm">
-        {/*<FormContainer> */}
         <Typography
           variant="h3"
           sx={{ mt: 5 }} //mezera nad textem
@@ -42,12 +31,9 @@ function ListMaterialPage() {
           &#9782; Kategorie materiálu
         </Typography>
         <Stack sx={{ justifyContent: "center" }} direction="row">
-          <ItemTypesList />
+          <ItemTypesList setCategory={setCategory} />
         </Stack>
-
-        {/* </FormContainer>*/}
       </Container>
-      {/* </section> */}
     </div>
   );
 }
