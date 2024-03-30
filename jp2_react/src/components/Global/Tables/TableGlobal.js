@@ -56,7 +56,11 @@ function TableGlobal(props) {
   // const data = useMemo(() => props.dataAPI);
   const data = props.dataAPI;
   const loading = props.loadingState;
-  const { addAction, editAction } = props;
+  const { addAction, editAction, setCategory } = props;
+
+  useEffect(() => {
+      props.type === "item" && setFilter("type.name", props.category);
+    }, [props.category]);
 
   const defaultColumn = React.useMemo(
     () => ({
@@ -78,6 +82,7 @@ function TableGlobal(props) {
     pageOptions,
     prepareRow,
     setPageSize,
+    setFilter,
     state,
     setGlobalFilter,
     selectedFlatRows,
@@ -141,6 +146,7 @@ function TableGlobal(props) {
       border: 0,
     },
   }));
+
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -259,7 +265,22 @@ function TableGlobal(props) {
                         )}
                       </>
                       <div>
-                        {column.canFilter ? column.render("Filter") : null}
+                        {column.canFilter && (
+                          <input
+                            value={
+                              column.id === "type.name"
+                                ? state.filters.find((f) => f.id === column.id)
+                                    ?.value || props.category
+                                : state.filters.find((f) => f.id === column.id)
+                                    ?.value || ""
+                            }
+                            onChange={(e) =>
+                              {setFilter(column.id, e.target.value);
+                              setCategory("")}
+                            }
+                            style={{ width: "60px" }}
+                          />
+                        )}
                       </div>
                     </TableCell>
                   ))}

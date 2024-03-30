@@ -1,5 +1,4 @@
 import React from "react";
-
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -7,6 +6,8 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 function BasicCard({ typeItem, type, typeCount, ...props }) {
+
+  const { setCategory } = props;
   return (
     <Card sx={{ minWidth: 80, minHeight: 200 }}>
       <CardContent>
@@ -15,8 +16,16 @@ function BasicCard({ typeItem, type, typeCount, ...props }) {
           color="primary.main"
           variant="h5"
           component="div"
-          style={{cursor: 'pointer'}}
-          onClick={() => console.log("test button")}
+          style={typeItem === "Kategorie materiálu" ? { cursor: "pointer" } : {}}
+          onClick={() => {
+            if (typeItem === "Kategorie materiálu") {
+              setCategory(type.name);
+              window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+              });
+            }
+          }}
         >
           {type.name}
         </Typography>
