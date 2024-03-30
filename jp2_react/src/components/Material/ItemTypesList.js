@@ -12,7 +12,7 @@ import AddItemTypeForm from "./AddItemTypeForm";
 import { Stack } from "@mui/system";
 import Notification from "../Global/Notifications/Notification";
 
-function ItemTypesList() {
+function ItemTypesList({setCategory}) {
 
     const dispatch = useDispatch();
     const confirm = useConfirm();
@@ -91,11 +91,7 @@ function ItemTypesList() {
             Přidat novou kategorii materiálu
           </Button>
         </Stack>
-        <Grid
-          container
-          alignItems="stretch"
-          spacing={{ xs: 2, md: 2 }}
-        >
+        <Grid container alignItems="stretch" spacing={{ xs: 2, md: 2 }}>
           {materialType.map((type) => (
             <Grid
               item
@@ -113,6 +109,7 @@ function ItemTypesList() {
                 typeCount={type.material_count}
                 delete={itemTypeDelete} //využít useRef, aby se nemuselo id posílat tam a zpět
                 edit={editAction}
+                setCategory={setCategory}
                 //ref={type}
               />
               {/* </Paper> */}

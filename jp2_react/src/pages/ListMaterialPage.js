@@ -1,11 +1,10 @@
-import React from 'react'
-import TableItem from '../components/Material/TableItem'
+import React, { useState } from "react";
+import TableItem from "../components/Material/TableItem";
 import { Container, Typography, Stack } from "@mui/material";
-import ItemTypesList from '../components/Material/ItemTypesList';
-
+import ItemTypesList from "../components/Material/ItemTypesList";
 
 function ListMaterialPage() {
-
+  const [category, setCategory] = useState("");
   return (
     <div>
       <Container component="section" id="itemList">
@@ -16,9 +15,9 @@ function ListMaterialPage() {
           align="center" //zarovná doprostřed
           gutterBottom //vytvoří mezeru pod textem
         >
-         Materiál
+          Materiál
         </Typography>
-        <TableItem />
+        <TableItem category={category} setCategory={setCategory} />
       </Container>
 
       <Container component="section" id="itemForm">
@@ -32,7 +31,7 @@ function ListMaterialPage() {
           &#9782; Kategorie materiálu
         </Typography>
         <Stack sx={{ justifyContent: "center" }} direction="row">
-          <ItemTypesList />
+          <ItemTypesList setCategory={setCategory} />
         </Stack>
       </Container>
     </div>
