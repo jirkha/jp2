@@ -12,11 +12,10 @@ function BasicCard({ typeItem, type, typeCount, ...props }) {
     <Card sx={{ minWidth: 80, minHeight: 200 }}>
       <CardContent>
         {/* <button> */}
-        <Typography
-          color="primary.main"
-          variant="h5"
-          component="div"
-          style={typeItem === "Kategorie materiálu" ? { cursor: "pointer" } : {}}
+        <Button
+          variant="outlined"
+          color="primary"
+          size="large"
           onClick={() => {
             if (typeItem === "Kategorie materiálu") {
               setCategory(type.name);
@@ -28,7 +27,7 @@ function BasicCard({ typeItem, type, typeCount, ...props }) {
           }}
         >
           {type.name}
-        </Typography>
+        </Button>
         {/* </button> */}
         {typeCount >= 0 && (
           <Typography color="text.secondary">
@@ -41,15 +40,15 @@ function BasicCard({ typeItem, type, typeCount, ...props }) {
         <Button
           //disabled
           size="small"
-          variant="outlined"
-          color="primary"
+          variant="contained"
+          style={{ backgroundColor: "rgb(255,165,0)" }}
           onClick={() => props.edit(type)}
         >
           Upravit
         </Button>
         <Button
           size="small"
-          variant="outlined"
+          variant="contained"
           color="error"
           onClick={(e) => props.delete(type, e)}
         >
