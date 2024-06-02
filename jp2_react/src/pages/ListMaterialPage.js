@@ -3,6 +3,7 @@ import TableItem from "../components/Material/TableItem";
 import About from "../components/Global/Other/About";
 import { Container, Typography, Stack } from "@mui/material";
 import ItemTypesList from "../components/Material/ItemTypesList";
+import CategoryIcon from "@mui/icons-material/Category";
 
 function ListMaterialPage() {
   const [category, setCategory] = useState("");
@@ -29,7 +30,7 @@ function ListMaterialPage() {
           align="center" //zarovná doprostřed
           gutterBottom //vytvoří mezeru pod textem
         >
-          &#9782; Kategorie materiálu
+          <CategoryIcon fontSize="large" /> Kategorie materiálu
         </Typography>
         <Stack sx={{ justifyContent: "center" }} direction="row">
           <ItemTypesList setCategory={setCategory} />
