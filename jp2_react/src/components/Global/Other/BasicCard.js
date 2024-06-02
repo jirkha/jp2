@@ -3,6 +3,7 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
 function BasicCard({ typeItem, type, typeCount, ...props }) {
@@ -13,7 +14,7 @@ function BasicCard({ typeItem, type, typeCount, ...props }) {
       <CardContent>
         {/* <button> */}
         <Button
-          variant="outlined"
+          variant="contained"
           color="primary"
           size="large"
           onClick={() => {
@@ -30,26 +31,32 @@ function BasicCard({ typeItem, type, typeCount, ...props }) {
         </Button>
         {/* </button> */}
         {typeCount >= 0 && (
-          <Typography color="text.secondary">
+          <Typography color="text.secondary" variant="body1" sx={{ mt: 2 }}>
             Počet položek: {typeCount}
           </Typography>
         )}
         {/* {{ type.note } !== "" && <Typography variant="body2">{type.note}</Typography>} */}
       </CardContent>
-      <CardActions sx={{ justifyContent: "flex-end" }}>
+      <CardActions
+        sx={{
+          flexDirection: { xs: "column", md: "row" },
+        }}
+      >
         <Button
           //disabled
           size="small"
           variant="contained"
-          style={{ backgroundColor: "rgb(255,165,0)" }}
+          style={{ backgroundColor: "rgba(255, 165, 0, 0.7)" }}
           onClick={() => props.edit(type)}
         >
           Upravit
         </Button>
+        <Box sx={{ margin: { xs: "5px 0", md: "0 5px" } }} />{" "}
+        {/* Rozestup mezi tlačítky */}
         <Button
           size="small"
           variant="contained"
-          color="error"
+          style={{ backgroundColor: "rgba(255, 0, 0, 0.7)" }}
           onClick={(e) => props.delete(type, e)}
         >
           Vymazat
