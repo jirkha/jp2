@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { format } from 'date-fns'
+import { Button } from "@mui/material";
 
 
 export const ITEM_COLUMNS = [
@@ -14,7 +15,13 @@ export const ITEM_COLUMNS = [
     Footer: "Název",
     accessor: "name",
     Cell: ({ row }) => (
-      <Link to={`/material/${row.original.id}`}>{row.original.name}</Link>
+      <Button
+        href={`/material/${row.original.id}`}
+        size="small"
+        variant="outlined"
+      >
+        {row.original.name}
+      </Button>
     ),
   },
   {
