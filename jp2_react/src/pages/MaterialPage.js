@@ -63,84 +63,86 @@ const MaterialPage = () => {
           </Typography>
           {/* <Typography variant="subtitle1">ID: {material?.m_ser.id}</Typography>
         <Typography variant="h6">Typ: {material?.m_ser.type.name}</Typography> */}
-          <Stack ml={-5} direction={{ xs: "column", md: "row" }}>
+          <Stack direction={{ xs: "column", md: "row" }}>
             <Container>
               <Grid
                 container
-                spacing={2}
-                //direction={"row"}
                 alignContent={"center"}
                 //xs={12}
               >
-                <Grid
-                  //container
-                  item
-                  xs={3}
-                  //justifyContent={"start"}
-                >
+                <Grid item xs={6}>
                   <Typography variant="subtitle1" color="primary">
                     Identifikační číslo
                   </Typography>
                 </Grid>
-                <Grid
-                  //container
-                  item
-                  xs={9}
-                  //justifyContent={"start"}
-                >
+                <Grid item xs={6}>
                   <Typography variant="subtitle1">{material?.id}</Typography>
                 </Grid>
-                <Divider variant="middle" style={{ width: "80%" }} />
-                <Grid item xs={3}>
+
+                <Grid item xs={12} sx={{ my: 1 }}>
+                  <Divider variant="middle" />
+                </Grid>
+
+                <Grid item xs={6}>
                   <Typography variant="subtitle1" color="primary">
                     Kategorie materiálu
                   </Typography>
                 </Grid>
-                <Grid item xs={9}>
+                <Grid item xs={6}>
                   <Typography variant="subtitle1">
                     {material?.type.name}
                   </Typography>
                 </Grid>
-                <Divider variant="middle" style={{ width: "80%" }} />
-                <Grid item xs={3}>
+
+                <Grid item xs={12} sx={{ my: 1 }}>
+                  <Divider variant="middle" />
+                </Grid>
+
+                <Grid item xs={6}>
                   <Typography variant="subtitle1" color="primary">
                     Cena materiálu
                   </Typography>
                 </Grid>
-                <Grid item xs={9}>
+                <Grid item xs={6}>
                   <Typography variant="subtitle1">
                     {material?.costs} Kč za {material?.unit}
                   </Typography>
                 </Grid>
-                <Divider variant="middle" style={{ width: "80%" }} />
-                <Grid item xs={3}>
+                <Grid item xs={12} sx={{ my: 1 }}>
+                  <Divider variant="middle" />
+                </Grid>
+                <Grid item xs={6}>
                   <Typography variant="subtitle1" color="primary">
                     Množství naskladněného materiálu
                   </Typography>
                 </Grid>
-                <Grid item xs={9}>
+                <Grid item xs={6}>
                   <Typography variant="subtitle1">
                     {material?.quantity_of_material} {material?.unit}
                   </Typography>
                 </Grid>
-                <Divider variant="middle" style={{ width: "80%" }} />
-                <Grid item xs={3}>
+                <Grid item xs={12} sx={{ my: 1 }}>
+                  <Divider variant="middle" />
+                </Grid>
+                <Grid item xs={6}>
                   <Typography variant="subtitle1" color="primary">
                     Dodavatel
                   </Typography>
                 </Grid>
-                <Grid item xs={9}>
+                <Grid item xs={6}>
                   <Typography variant="subtitle1">
                     {material?.supplier}
                   </Typography>
                 </Grid>
-                <Divider variant="middle" style={{ width: "80%" }} />
-                <Grid item xs={3}>
+                <Grid item xs={12} sx={{ my: 1 }}>
+                  <Divider variant="middle" />
+                </Grid>
+                <Grid item xs={6}>
                   <Typography variant="subtitle1" color="primary">
                     Odkaz
                   </Typography>
                 </Grid>
-                <Grid item xs={9}>
+                <Grid item xs={6}>
                   <Typography variant="subtitle1" component="div">
                     <a
                       href={`${material?.link}`}
@@ -151,36 +153,40 @@ const MaterialPage = () => {
                     </a>
                   </Typography>
                 </Grid>
-                <Divider variant="middle" style={{ width: "80%" }} />
-                <Grid item xs={3}>
+                <Grid item xs={12} sx={{ my: 1 }}>
+                  <Divider variant="middle" />
+                </Grid>
+                <Grid item xs={6}>
                   <Typography variant="subtitle1" color="primary">
                     Poznámka
                   </Typography>
                 </Grid>
-                <Grid item xs={9}>
+                <Grid item xs={6}>
                   <Typography variant="subtitle1">{material?.note}</Typography>
                 </Grid>
-                <Divider variant="middle" style={{ width: "80%" }} />
-                <Grid item xs={3}>
+                <Grid item xs={12} sx={{ my: 1 }}>
+                  <Divider variant="middle" />
+                </Grid>
+                <Grid item xs={6}>
                   <Typography variant="subtitle1" color="primary">
                     Vytvořeno
                   </Typography>
                 </Grid>
-                <Grid item xs={9}>
+                <Grid item xs={6}>
                   <Typography variant="subtitle1">
-                    {/* {format(new Date(material?.m_ser.created), "dd.MM.yyyy kk:mm:ss")} */}
                     {material?.created}
                   </Typography>
                 </Grid>
-                <Divider variant="middle" style={{ width: "80%" }} />
-                <Grid item xs={3}>
+                <Grid item xs={12} sx={{ my: 1 }}>
+                  <Divider variant="middle" />
+                </Grid>
+                <Grid item xs={6}>
                   <Typography variant="subtitle1" color="primary">
                     Upraveno
                   </Typography>
                 </Grid>
-                <Grid item xs={9} sx={{ mb: 5 }}>
+                <Grid item xs={6} sx={{ mb: 5 }}>
                   <Typography variant="subtitle1">
-                    {/* {format(new Date(material?.m_ser.updated), "dd.MM.yyyy kk:mm:ss")} */}
                     {material?.updated}
                   </Typography>
                 </Grid>

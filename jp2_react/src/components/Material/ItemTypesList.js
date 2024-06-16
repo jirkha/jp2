@@ -85,6 +85,7 @@ function ItemTypesList({setCategory}) {
           <Button
             variant="contained"
             color="primary"
+            //</Stack>style={{ backgroundColor: "black" }}
             //onClick={(() => setOpenPopup2(true), setMaterialTypeObj(undefined))}
             onClick={addAction}
           >
