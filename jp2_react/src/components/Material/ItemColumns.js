@@ -16,11 +16,17 @@ export const ITEM_COLUMNS = [
     accessor: "name",
     Cell: ({ row }) => (
       <Button
-        href={`/material/${row.original.id}`}
+        // href={`/material/${row.original.id}`}
         size="small"
         variant="outlined"
       >
-        {row.original.name}
+        {/* {row.original.name} */}
+        <Link
+          to={`/material/${row.original.id}`}
+          style={{ textDecoration: "none", color: "inherit" }}
+        >
+          {row.original.name}
+        </Link>
       </Button>
     ),
   },
