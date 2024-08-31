@@ -66,7 +66,7 @@ export default function DateRangePicker(props) {
             <Button
               type="submit"
               className="button"
-              variant="outlined"
+              variant="contained"
               sx={{ height: 56, width: 350 }}
               //onClick={() => isValid && closeOpenPopup()}
             >
@@ -75,7 +75,7 @@ export default function DateRangePicker(props) {
             <Button
               //type="submit"
               className="button"
-              variant="outlined"
+              variant="contained"
               color="success"
               sx={{ height: 56, width: 350 }}
               onClick={() => resetTable()}

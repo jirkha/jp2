@@ -4,7 +4,7 @@ import TableSale from "../components/Sale/TableSale";
 
 import { Container, Typography, Stack } from "@mui/material";
 import SaleTypesList from '../components/Sale/SaleTypesList';
-
+import CategoryIcon from "@mui/icons-material/Category";
 
 function SalePage() {
   return (
@@ -17,7 +17,7 @@ function SalePage() {
           align="center" //zarovná doprostřed
           gutterBottom //vytvoří mezeru pod textem
         >
-          &#9782; Prodejní kanály
+          Prodejní kanály
         </Typography>
         <TableSale />
       </Container>
@@ -31,7 +31,15 @@ function SalePage() {
           align="center" //zarovná doprostřed
           gutterBottom //vytvoří mezeru pod textem
         >
-          &#9782; Kategorie prodejních kanálů
+          <CategoryIcon
+            fontSize="large"
+            sx={{
+              verticalAlign: "middle",
+              position: "relative",
+              bottom: "0.10em",
+            }}
+          />{" "}
+          Kategorie prodejních kanálů
         </Typography>
         <Stack sx={{ justifyContent: "center" }} direction="row">
           <SaleTypesList />
