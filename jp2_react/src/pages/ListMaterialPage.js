@@ -29,7 +29,15 @@ function ListMaterialPage() {
           align="center" //zarovná doprostřed
           gutterBottom //vytvoří mezeru pod textem
         >
-          <CategoryIcon fontSize="large" /> Kategorie materiálu
+          <CategoryIcon
+            fontSize="large"
+            sx={{
+              verticalAlign: "middle",
+              position: "relative",
+              bottom: "0.10em",
+            }}
+          />{" "}
+          Kategorie materiálu
         </Typography>
         <Stack sx={{ justifyContent: "center" }} direction="row">
           <ItemTypesList setCategory={setCategory} />

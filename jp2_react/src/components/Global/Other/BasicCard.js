@@ -30,11 +30,10 @@ function BasicCard({ typeItem, type, typeCount, ...props }) {
           onClick={() => {
             if (typeItem === "Kategorie materiálu") {
               setCategory(type.name);
-              window.scrollTo({
-                top: 0,
-                behavior: "smooth",
-              });
             }
+            document.getElementById("table").scrollIntoView({
+              behavior: "smooth",
+            });
           }}
         >
           {type.name}

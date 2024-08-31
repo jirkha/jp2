@@ -1,4 +1,5 @@
 import React from "react";
+import TodayIcon from "@mui/icons-material/Today";
 
 import { Container, Typography, Stack, Box } from "@mui/material";
 
@@ -13,7 +14,15 @@ function StatisticUnit(props) {
         align="center" //zarovná doprostřed
         gutterBottom //vytvoří mezeru pod textem
       >
-        &#9782; {props.title}
+        <TodayIcon
+          fontSize="large"
+          sx={{
+            verticalAlign: "middle",
+            position: "relative",
+            bottom: "0.10em",
+          }}
+        />{" "}
+        {props.title}
       </Typography>
       {props.filter && (
         <Stack

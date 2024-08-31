@@ -1,7 +1,7 @@
 import React from 'react'
 
 import TableProduct from '../components/Product/TableProduct';
-
+import CategoryIcon from "@mui/icons-material/Category";
 import { Container, Typography, Stack } from "@mui/material";
 import ProductTypesList from '../components/Product/ProductTypesList';
 
@@ -18,25 +18,10 @@ function ListProductPage() {
           align="center" //zarovná doprostřed
           gutterBottom //vytvoří mezeru pod textem
         >
-          &#9782; Produkty
+          Produkty
         </Typography>
         <TableProduct />
       </Container>
-
-      {/* <Container component="section" id="productForm">
-        <Typography
-          variant="h2"
-          sx={{ mt: 5 }} //mezera nad textem
-          color="primary"
-          align="center" //zarovná doprostřed
-          gutterBottom //vytvoří mezeru pod textem
-        >
-          &#9782; Přidat produkt
-        </Typography>
-        <Stack sx={{ justifyContent: "center" }} direction="row">
-          <AddProductForm />
-        </Stack>
-      </Container> */}
 
       <Container component="section" id="itemForm">
         <Typography
@@ -46,7 +31,15 @@ function ListProductPage() {
           align="center" //zarovná doprostřed
           gutterBottom //vytvoří mezeru pod textem
         >
-          &#9782; Kategorie produktů
+          <CategoryIcon
+            fontSize="large"
+            sx={{
+              verticalAlign: "middle",
+              position: "relative",
+              bottom: "0.10em",
+            }}
+          />{" "}
+          Kategorie produktů
         </Typography>
         <Stack sx={{ justifyContent: "center" }} direction="row">
           <ProductTypesList />

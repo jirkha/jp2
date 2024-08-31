@@ -3,6 +3,8 @@ import StorageForm from "../components/Stock/StorageForm";
 import RemovalForm from "../components/Stock/RemovalForm";
 import TableStorage from "../components/Stock/TableStorage";
 import TableRemoval from "../components/Stock/TableRemoval"
+import ArchiveIcon from "@mui/icons-material/Archive";
+import UnarchiveOutlinedIcon from "@mui/icons-material/UnarchiveOutlined";
 
 import { Container, Typography, Stack, Divider, Box } from "@mui/material";
 
@@ -17,7 +19,7 @@ function StockPage() {
           align="center" //zarovná doprostřed
           //gutterBottom //vytvoří mezeru pod textem
         >
-          &#9782; Sklad
+          Sklad
         </Typography>
         <Stack
           justifyContent="space-around" //vzájemná poloha
@@ -34,7 +36,15 @@ function StockPage() {
               align="center" //zarovná doprostřed
               gutterBottom //vytvoří mezeru pod textem
             >
-              &#9782; Naskladnění
+              <ArchiveIcon
+                fontSize="large"
+                sx={{
+                  verticalAlign: "middle",
+                  position: "relative",
+                  bottom: "0.10em",
+                }}
+              />{" "}
+              Naskladnění
             </Typography>
             <TableStorage />
           </Box>
@@ -46,7 +56,15 @@ function StockPage() {
               align="center" //zarovná doprostřed
               gutterBottom //vytvoří mezeru pod textem
             >
-              &#9782; Vyskladnění
+              <UnarchiveOutlinedIcon
+                fontSize="large"
+                sx={{
+                  verticalAlign: "middle",
+                  position: "relative",
+                  bottom: "0.10em",
+                }}
+              />{" "}
+              Vyskladnění
             </Typography>
             <TableRemoval />
           </Box>

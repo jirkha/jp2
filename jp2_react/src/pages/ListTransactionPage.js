@@ -22,7 +22,7 @@ function ListTransactionPage() {
           align="center" //zarovná doprostřed
           gutterBottom //vytvoří mezeru pod textem
         >
-          &#9782; Transakce
+          Transakce
         </Typography>
         <TableTransaction />
       </Container>

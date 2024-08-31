@@ -77,7 +77,7 @@ function SalesStatisticPage() {
           align="center" //zarovná doprostřed
           gutterBottom //vytvoří mezeru pod textem
         >
-          &#9782; Statistika tržeb
+          Statistika tržeb
         </Typography>
         <StatisticUnit
           title="Denní tržby"
