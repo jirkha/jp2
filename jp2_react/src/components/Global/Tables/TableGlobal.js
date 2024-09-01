@@ -149,7 +149,7 @@ function TableGlobal(props) {
 
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1 }} id="table">
         <Grid container>
           <Grid
             container
@@ -274,10 +274,10 @@ function TableGlobal(props) {
                                 : state.filters.find((f) => f.id === column.id)
                                     ?.value || ""
                             }
-                            onChange={(e) =>
-                              {setFilter(column.id, e.target.value);
-                              setCategory("")}
-                            }
+                            onChange={(e) => {
+                              setFilter(column.id, e.target.value);
+                              setCategory("");
+                            }}
                             style={{ width: "60px" }}
                           />
                         )}
