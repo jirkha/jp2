@@ -5,8 +5,7 @@ from langchain.llms import OpenAI
 from langchain.agents import create_sql_agent
 from langchain.agents.agent_toolkits import SQLDatabaseToolkit
 from langchain.sql_database import SQLDatabase
-# from langchain_experimental.sql import SQLDatabaseChain
-# from langchain.schema import HumanMessage
+
 
 OPENAI_API_KEY = config('OPENAI_API_KEY')
 DATABASE_URL = config('DATABASE_URL')
