@@ -7,108 +7,110 @@ import { Box, Container, Divider, Stack, Typography } from "@mui/material";
 
 function About() {
   return (
-    <Stack
-      direction={{ xs: "column", sm: "row" }}
-      spacing={{ xs: 1, sm: 2, md: 4 }}
-      justifyContent="center"
-      alignItems="center"
-      sx={{
-        p: 1,
-        my: 1,
-        boxShadow: 3,
-        borderRadius: 1,
-        bgcolor: "#CCE5FF",
-        transition: "background-color 0.3s ease-in-out", // Přidává plynulý přechod
-        "&:hover": {
-          bgcolor: "#AAD4FF",
-        },
-      }}
-    >
-      <Box
-        height="100%"
-        display="flex"
+    <Container maxWidth="lg">
+      <Stack
+        direction={{ xs: "column", sm: "row" }}
+        spacing={{ xs: 1, sm: 2, md: 4 }}
         justifyContent="center"
-        flexDirection="column"
         alignItems="center"
+        sx={{
+          p: 1,
+          my: 1,
+          boxShadow: 3,
+          borderRadius: 1,
+          bgcolor: "#CCE5FF",
+          transition: "background-color 0.3s ease-in-out", // Přidává plynulý přechod
+          "&:hover": {
+            bgcolor: "#AAD4FF",
+          },
+        }}
       >
-        <img src={portrait} width="222" alt="Portrait" />
-      </Box>
-      <Container>
-        <Typography
-          variant="h4"
-          color="#004C99"
-          sx={{
-            textAlign: "center",
-            "@media (min-width: 600px)": {
-              textAlign: "left",
-            },
-          }}
+        <Box
+          height="100%"
+          display="flex"
+          justifyContent="center"
+          flexDirection="column"
+          alignItems="center"
         >
-          <strong>Jiří Vecko</strong>
-        </Typography>
-
-        <Stack direction={{ xs: "column", md: "row" }} sx={{ py: 1 }}>
+          <img src={portrait} width="222" alt="Portrait" />
+        </Box>
+        <Container>
           <Typography
-            variant="h6"
-            color="success"
+            variant="h4"
+            color="#004C99"
             sx={{
               textAlign: "center",
-              pb: 1,
               "@media (min-width: 600px)": {
                 textAlign: "left",
-                pb: 0,
               },
-              pr: 2,
             }}
           >
-            Full-Stack Developer
+            <strong>Jiří Vecko</strong>
           </Typography>
 
-          <Stack
-            direction="row"
-            justifyContent={{ xs: "center", sm: "flex-start" }}
-            flexWrap="wrap"
-            spacing={2}
-            divider={<Divider orientation="vertical" flexItem />}
-          >
-            <a
-              href="https://www.jirivecko.cz"
-              target="_blank"
-              rel="noopener noreferrer"
+          <Stack direction={{ xs: "column", md: "row" }} sx={{ py: 1 }}>
+            <Typography
+              variant="h6"
+              color="success"
+              sx={{
+                textAlign: "center",
+                pb: 1,
+                "@media (min-width: 600px)": {
+                  textAlign: "left",
+                  pb: 0,
+                },
+                pr: 2,
+              }}
             >
-              <img src={jiri_vecko} alt="GitHub Logo" height="30" />
-            </a>
-            <a
-              href="https://github.com/jirkha/jp2"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src={github} alt="GitHub Logo" height="30" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/ji%C5%99%C3%AD-vecko-44579b127/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src={linkedIn} alt="GitHub Logo" height="30" />
-            </a>
-          </Stack>
-        </Stack>
+              Full-Stack Developer
+            </Typography>
 
-        <Typography
-          variant="subtitle1"
-          sx={{
-            textAlign: "center",
-            "@media (min-width: 600px)": {
-              textAlign: "left",
-            },
-          }}
-        >
-          Mou největší motivací je touha učit se novým věcem. Proto jsem v roce
-          2021 začal s programováním a neustále se posouvám vpřed.
-        </Typography>
-      </Container>
-    </Stack>
+            <Stack
+              direction="row"
+              justifyContent={{ xs: "center", sm: "flex-start" }}
+              flexWrap="wrap"
+              spacing={2}
+              divider={<Divider orientation="vertical" flexItem />}
+            >
+              <a
+                href="https://www.jirivecko.cz"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={jiri_vecko} alt="GitHub Logo" height="30" />
+              </a>
+              <a
+                href="https://github.com/jirkha/jp2"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={github} alt="GitHub Logo" height="30" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/ji%C5%99%C3%AD-vecko-44579b127/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={linkedIn} alt="GitHub Logo" height="30" />
+              </a>
+            </Stack>
+          </Stack>
+
+          <Typography
+            variant="subtitle1"
+            sx={{
+              textAlign: "center",
+              "@media (min-width: 600px)": {
+                textAlign: "left",
+              },
+            }}
+          >
+            Mou největší motivací je touha učit se novým věcem. Proto jsem v
+            roce 2021 začal s programováním a neustále se posouvám vpřed.
+          </Typography>
+        </Container>
+      </Stack>
+    </Container>
   );
 }
 
