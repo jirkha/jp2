@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.6adeb6e1.css",
-    "main.js": "/static/js/main.13e6334d.js",
+    "main.js": "/static/js/main.31748851.js",
     "static/media/github-logo.png": "/static/media/github-logo.8529ab6a259d6b42cb54.png",
     "static/media/og_image.png": "/static/media/og_image.eee84875f2acbbbbecb7.png",
     "static/media/portrait_jiri_vecko_cut.jpg": "/static/media/portrait_jiri_vecko_cut.5e80342edf4bacba08c7.jpg",
@@ -10,10 +10,10 @@
     "static/media/favicon.ico": "/static/media/favicon.4cfdb8fbf2b4aad55895.ico",
     "index.html": "/index.html",
     "main.6adeb6e1.css.map": "/static/css/main.6adeb6e1.css.map",
-    "main.13e6334d.js.map": "/static/js/main.13e6334d.js.map"
+    "main.31748851.js.map": "/static/js/main.31748851.js.map"
   },
   "entrypoints": [
     "static/css/main.6adeb6e1.css",
-    "static/js/main.13e6334d.js"
+    "static/js/main.31748851.js"
   ]
 }
