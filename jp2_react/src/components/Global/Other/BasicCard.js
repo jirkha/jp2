@@ -2,31 +2,51 @@ import React from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
+import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 function BasicCard({ typeItem, type, typeCount, ...props }) {
-
   const { setCategory } = props;
   return (
     <Card
       variant="outlined"
       sx={{
-        minWidth: 80,
-        minHeight: 200,
-        display: "flex",
+        minWidth: 100,
+        minHeight: 180,
+        paddingX: "5px",
         flexDirection: "column",
         justifyContent: "space-between",
         backgroundColor: "#f5f5f5",
       }}
     >
-      <CardContent>
+      <CardContent component="container">
         {/* <button> */}
         <Button
           variant="outlined"
           color="primary"
-          size="large"
+          size="medium"
+          sx={{
+            backgroundColor: "white",
+            color: "primary.main",
+            borderColor: "primary.main",
+            "&:hover": {
+              backgroundColor: "#E0E0E0",
+            },
+            height: "55px",
+            width: "100%",
+            alignItems: "center",
+            justifyContent: "center",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "normal",
+            display: "-webkit-box",
+            WebkitBoxOrient: "vertical",
+            WebkitLineClamp: 2,
+          }}
           onClick={() => {
             if (typeItem === "Kategorie materiálu") {
               setCategory(type.name);
@@ -40,45 +60,44 @@ function BasicCard({ typeItem, type, typeCount, ...props }) {
         </Button>
         {/* </button> */}
         {typeCount >= 0 && (
-          <Typography color="text.secondary" variant="subtitle1" sx={{ mt: 2 }}>
-            Počet položek: {typeCount}
+          <Typography
+            color="text.secondary"
+            variant="subtitle1"
+            sx={{ mt: 2, display: "flex", justifyContent: "center" }}
+          >
+            Položek: {typeCount}
           </Typography>
         )}
         {/* {{ type.note } !== "" && <Typography variant="body2">{type.note}</Typography>} */}
       </CardContent>
       <CardActions
+        disableSpacing="true"
         sx={{
-          flexDirection: { xs: "column", md: "row" },
+          justifyContent: { xs: "center", sm: "space-around" },
+          gap: "3px"
         }}
       >
         <Button
-          //disabled
           size="small"
           variant="outlined"
-          style={{
-            borderColor: "rgba(255, 165, 0, 0.7)",
-            borderWidth: 2,
-            backgroundColor: "transparent",
-            color: "rgba(255, 165, 0, 0.7)",
-          }}
+          color="primary"
+          // style={{
+          //   borderColor: "rgb(3, 155, 229)",
+          //   borderWidth: 2,
+          //   backgroundColor: "transparent",
+          //   color: "rgb(3, 155, 229)",
+          // }}
           onClick={() => props.edit(type)}
         >
-          <span style={{ padding: "0 16px" }}>Upravit</span>
+          <EditIcon />
         </Button>
-        <Box sx={{ margin: { xs: "2px 0", md: "0 2px" } }} />{" "}
-        {/* Rozestup mezi tlačítky */}
         <Button
           size="small"
           variant="outlined"
-          style={{
-            borderColor: "rgba(255, 0, 0, 0.7)",
-            borderWidth: 2,
-            backgroundColor: "transparent",
-            color: "rgba(255, 0, 0, 0.7)",
-          }}
+          color="error"
           onClick={(e) => props.delete(type, e)}
         >
-          <span style={{ padding: "0 16px" }}>Vymazat</span>
+          <DeleteForeverIcon />
         </Button>
       </CardActions>
     </Card>
