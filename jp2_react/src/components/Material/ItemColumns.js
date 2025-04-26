@@ -15,37 +15,36 @@ export const ITEM_COLUMNS = [
     Footer: "Název",
     accessor: "name",
     Cell: ({ row }) => (
-      <Button
-        sx={{
-          backgroundColor: "white",
-          color: "primary.main",
-          borderColor: "primary.main",
-          "&:hover": {
-            backgroundColor: "#E0E0E0",
-          },
-          height: "30px",
-          width: "100%",
-          maxWidth: "100%",
-          minWidth: 0,
-          paddingLeft: "12px",
-          justifyContent: "flex-start",
-          textAlign: "left",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          whiteSpace: "nowrap",
-          display: "block",
-        }}
-        size="small"
-        variant="outlined"
+      <Link
+        to={`/material/${row.original.id}`}
+        style={{ textDecoration: "none", color: "inherit" }}
       >
-        {/* {row.original.name} */}
-        <Link
-          to={`/material/${row.original.id}`}
-          style={{ textDecoration: "none", color: "inherit" }}
+        <Button
+          sx={{
+            backgroundColor: "white",
+            color: "primary.main",
+            borderColor: "primary.main",
+            "&:hover": {
+              backgroundColor: "#E0E0E0",
+            },
+            height: "30px",
+            width: "100%",
+            maxWidth: "100%",
+            minWidth: 0,
+            paddingLeft: "12px",
+            justifyContent: "flex-start",
+            textAlign: "left",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+            display: "block",
+          }}
+          size="small"
+          variant="outlined"
         >
           {row.original.name}
-        </Link>
-      </Button>
+        </Button>
+      </Link>
     ),
   },
   {
