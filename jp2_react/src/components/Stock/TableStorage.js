@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import TableGlobal from "../Global/Tables/TableGlobal";
 import { STORAGE_COLUMNS } from "../Stock/StorageColumns";
 import { useDispatch, useSelector } from "react-redux";
 import { getStorage } from "../Store/Features/Material/storageSlice";
-import { loading } from "../Store/Features/Material/storageSlice";
 import { Popup } from "../Global/Other/Popup";
 import Notification from "../Global/Notifications/Notification";
 import StorageForm from "./StorageForm";
@@ -17,9 +16,8 @@ function TableStorage() {
     type: "",
   });
   
-  const storage_pre = useSelector((state) => state.storage.data);
-  const storage = useMemo(() => storage_pre);
-  const load = useSelector(loading);
+  const storage = useSelector((state) => state.storage.data);
+  const load = useSelector(state => state.storage.loading);
 
   const dispatch = useDispatch();
 

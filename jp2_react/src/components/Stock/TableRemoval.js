@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import TableGlobal from "../Global/Tables/TableGlobal";
 import { REMOVAL_COLUMNS } from "./RemovalColumns";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,8 +16,7 @@ function TableRemoval() {
       type: "",
     });
 
-  const removal_pre = useSelector((state) => state.removal.data);
-  const removal = useMemo(() => removal_pre)
+  const removal = useSelector((state) => state.removal.data);
   const load = useSelector((state) => state.removal.loading);
 
   const dispatch = useDispatch();
