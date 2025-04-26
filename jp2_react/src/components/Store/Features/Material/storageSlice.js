@@ -1,38 +1,15 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
-import axios from 'axios';
+import { createGenericApiSlice } from "../createGenericSlice";
 
-export const getStorage = createAsyncThunk(
-    "storage/getData", () => {
-        return axios.get("/api/list_storage/").then((res) => res.data);
-    }
-)
-
-export const loading = ((state) => state.storage.loading);
-
-const storageSlice = createSlice({
-  name: "storage",
-  initialState: {
-    data: [],
-    //isSuccess: false,
-    message: "",
-    loading: false,
-  },
-  reducers: {},
-  extraReducers: (builder) => {
-    builder.addCase(getStorage.pending, (state) => {
-      state.loading = true;
-    });
-    builder.addCase(getStorage.fulfilled, (state, action) => {
-      state.loading = false;
-      state.data = action.payload;
-      state.error = "";
-    });
-    builder.addCase(getStorage.rejected, (state, action) => {
-      state.loading = false;
-      state.data = [];
-      state.error = action.error.message;
-    });
-  },
+// Výsledek (objekt s vlastnostmi fetchData, reducer, slice) bude uložen do generatedSliceData.
+const generatedSliceData = createGenericApiSlice({
+  sliceName: "storage",
+  apiEndpoint: "/api/list_storage/",
+  // initialDataValue: [] // Volitelná počáteční hodnota (zde nenastavena, použije se výchozí prázdné pole)
 });
 
+const getStorage = generatedSliceData.fetchData;
+
+const storageSlice = generatedSliceData.slice;
+
+export { getStorage };
 export default storageSlice;

@@ -1,36 +1,15 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
-import axios from 'axios';
+import { createGenericApiSlice } from "../createGenericSlice";
 
-export const getRemoval = createAsyncThunk(
-    "removal/getData", () => {
-        return axios.get("/api/list_removal/").then((res) => res.data);
-    }
-)
-
-const removalSlice = createSlice({
-    name: "removal",
-    initialState: {
-        data: [],
-        //isSuccess: false,
-        message: "",
-        loading: false,
-    },
-    reducers: {},
-    extraReducers: (builder) => {
-        builder.addCase(getRemoval.pending, (state) => {
-          state.loading = true;
-        });
-        builder.addCase(getRemoval.fulfilled, (state, action) => {
-          state.loading = false;
-          state.data = action.payload;
-          state.error = "";
-        });
-        builder.addCase(getRemoval.rejected, (state, action) => {
-          state.loading = false;
-          state.data = [];
-          state.error = action.error.message;
-        });
-    },
+// Výsledek (objekt s vlastnostmi fetchData, reducer, slice) bude uložen do generatedSliceData.
+const generatedSliceData = createGenericApiSlice({
+  sliceName: "removal",
+  apiEndpoint: "/api/list_removal/",
+  // initialDataValue: [] // Volitelná počáteční hodnota (zde nenastavena, použije se výchozí prázdné pole)
 });
 
+const getRemoval = generatedSliceData.fetchData;
+
+const removalSlice = generatedSliceData.slice;
+
+export { getRemoval };
 export default removalSlice;

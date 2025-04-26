@@ -1,38 +1,15 @@
-import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
-import axios from 'axios';
+import { createGenericApiSlice } from '../createGenericSlice';
 
-export const getMaterial = createAsyncThunk(
-    "material/getData", () => {
-        return axios
-        .get("/api/list_items/")
-        .then((res) => res.data)
-    }
-)
-
-const materialSlice = createSlice({
-    name: "material",
-    initialState: {
-        data: [],
-        //isSuccess: false,
-        message: "",
-        loading: false,
-    },
-    reducers: {},
-    extraReducers: (builder) => {
-        builder.addCase(getMaterial.pending, state => {
-            state.loading = true
-        });
-        builder.addCase(getMaterial.fulfilled, (state, action) => {
-          state.loading = false
-          state.data = action.payload
-          state.error = ""
-        });
-        builder.addCase(getMaterial.rejected, (state, action) => {
-          state.loading = false
-          state.data = []
-          state.error = action.error.message
-        });
-    },
+// Výsledek (objekt s vlastnostmi fetchData, reducer, slice) bude uložen do generatedSliceData.
+const generatedSliceData = createGenericApiSlice({
+  sliceName: 'material',
+  apiEndpoint: '/api/list_items/',
+  // initialDataValue: [] // Volitelná počáteční hodnota (zde nenastavena, použije se výchozí prázdné pole)
 });
 
+const getMaterial = generatedSliceData.fetchData;
+
+const materialSlice = generatedSliceData.slice;
+
+export { getMaterial };
 export default materialSlice;
