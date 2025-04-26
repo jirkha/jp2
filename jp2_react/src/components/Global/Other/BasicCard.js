@@ -2,9 +2,7 @@ import React from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
@@ -24,7 +22,6 @@ function BasicCard({ typeItem, type, typeCount, ...props }) {
       }}
     >
       <CardContent component="container">
-        {/* <button> */}
         <Button
           variant="outlined"
           color="primary"
@@ -71,7 +68,7 @@ function BasicCard({ typeItem, type, typeCount, ...props }) {
         {/* {{ type.note } !== "" && <Typography variant="body2">{type.note}</Typography>} */}
       </CardContent>
       <CardActions
-        disableSpacing="true"
+        disableSpacing={true}
         sx={{
           justifyContent: { xs: "center", sm: "space-around" },
           gap: "3px"
@@ -81,12 +78,6 @@ function BasicCard({ typeItem, type, typeCount, ...props }) {
           size="small"
           variant="outlined"
           color="primary"
-          // style={{
-          //   borderColor: "rgb(3, 155, 229)",
-          //   borderWidth: 2,
-          //   backgroundColor: "transparent",
-          //   color: "rgb(3, 155, 229)",
-          // }}
           onClick={() => props.edit(type)}
         >
           <EditIcon />
