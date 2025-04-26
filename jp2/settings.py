@@ -73,7 +73,6 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'corsheaders.middleware.CorsPostCsrfMiddleware', #
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -184,8 +183,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # ]
 
 CORS_ALLOW_ALL_ORIGINS = True  # v produkci nahradit předchozím 'CORS_ALLOWED_ORIGINS' a přidat příslušnou adresu
-
-CORS_REPLACE_HTTPS_REFERER = True
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
