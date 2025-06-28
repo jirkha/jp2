@@ -11,10 +11,16 @@ const Footer = () => {
       <Stack
         component="footer"
         direction={{ xs: "column", sm: "row" }}
-        sx={{ justifyContent: "space-evenly", alignItems: "center", p: 1, pt: 4 }}
+        sx={{
+          justifyContent: "space-evenly",
+          alignItems: "center",
+          p: 1,
+          pt: 4,
+        }}
       >
         <Typography variant="h6" color="primary">
-          © Jiří Vecko
+          © 2022–{new Date().getFullYear()} Jiří Vecko. Všechna práva
+          vyhrazena.
         </Typography>
         <Box sx={{ display: { xs: "none", md: "block" } }}>
           <a href="https://www.jirivecko.cz">
@@ -27,19 +33,14 @@ const Footer = () => {
           <Box
             component="img"
             src={jirivecko}
-            sx={{ p: 2}}
+            sx={{ p: 2 }}
             width="45px"
             alt="Logo"
           />
         </a>
 
         <a href="https://www.jpcandles.cz">
-          <Box
-            component="img"
-            src={logo}
-            height="45px"
-            alt="Logo"
-          />
+          <Box component="img" src={logo} height="45px" alt="Logo" />
         </a>
       </Stack>
     </>
