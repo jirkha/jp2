@@ -7,7 +7,7 @@ import jirivecko from "../assets/jiri_vecko_logo_sm.jpeg";
 const Footer = () => {
   return (
     <>
-      {/* <Divider sx={{ mt: 5 }} /> */}
+      <Divider sx={{ mt: 4 }} />
       <Stack
         component="footer"
         direction={{ xs: "column", sm: "row" }}
@@ -15,16 +15,34 @@ const Footer = () => {
           justifyContent: "space-evenly",
           alignItems: "center",
           p: 1,
-          pt: 4,
+          pt: 2,
+          textAlign: { xs: "center", sm: "left" },
         }}
       >
-        <Typography variant="h6" color="primary">
-          © 2022–{new Date().getFullYear()} Jiří Vecko. Všechna práva
-          vyhrazena.
+        <Typography
+          variant="h6"
+          color="primary"
+          sx={{
+            textAlign: { xs: "center", sm: "left" }, 
+          }}
+        >
+          © 2022–{new Date().getFullYear()} Jiří Vecko. Všechna práva vyhrazena.
         </Typography>
-        <Box sx={{ display: { xs: "none", md: "block" } }}>
+
+        <Box
+          sx={{
+            display: { xs: "none", md: "block" },
+          }}
+        >
           <a href="https://www.jirivecko.cz">
-            <Typography variant="h6">www.jirivecko.cz</Typography>
+            <Typography
+              variant="h6"
+              sx={{
+                textAlign: { xs: "center", sm: "left" },
+              }}
+            >
+              www.jirivecko.cz
+            </Typography>
           </a>
         </Box>
 
