@@ -1,5 +1,6 @@
+import portrait from "../../../assets/portrait_jiri_vecko_cut.jpg";
 import github from "../../../assets/images/Github.png";
-import jiri_vecko from "../../../assets/images/jiri_vecko_logo_sm.jpeg";
+import jiri_vecko from "../../../assets/jiri_vecko_logo_sm.jpeg";
 import linkedIn from "../../../assets/images/LinkedIn.png";
 import {
   Box,
@@ -51,7 +52,8 @@ function About() {
         >
           <Box
             component="img"
-            src="/images/portrait_jiri_vecko_cut.jpg"
+            src={portrait}
+            //src="/portrait_jiri_vecko_cut.jpg"
             alt="Portrait"
             sx={{
               width: {

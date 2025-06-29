@@ -1,6 +1,6 @@
 import { Stack, Typography, Box, Divider } from "@mui/material";
-import logo from "../assets/images/JP_logo_black.png";
-import jirivecko from "../assets/images/jiri_vecko_logo_sm.jpeg";
+import logo from "../assets/JP_logo_black.png";
+import jirivecko from "../assets/jiri_vecko_logo_sm.jpeg";
 
 const Footer = () => {
   return (
