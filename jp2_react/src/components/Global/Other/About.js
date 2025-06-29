@@ -1,10 +1,17 @@
+import portrait from "../../../assets/portrait_jiri_vecko_cut.jpg";
 import github from "../../../assets/images/Github.png";
 import jiri_vecko from "../../../assets/jiri_vecko_logo_sm.jpeg";
 import linkedIn from "../../../assets/images/LinkedIn.png";
-import { Box, Container, Divider, Stack, Typography, Chip } from "@mui/material";
+import {
+  Box,
+  Container,
+  Divider,
+  Stack,
+  Typography,
+  Chip,
+} from "@mui/material";
 
 function About() {
-
   const techStack = [
     "React",
     "JavaScript",
@@ -45,7 +52,8 @@ function About() {
         >
           <Box
             component="img"
-            src="/portrait_jiri_vecko_cut.jpg"
+            src={portrait}
+            //src="/portrait_jiri_vecko_cut.jpg"
             alt="Portrait"
             sx={{
               width: {
