@@ -45,16 +45,16 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
-    #'whitenoise.runserver_nostatic',
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
     'api.apps.ApiConfig',
-    
+
     'rest_framework',
     'corsheaders',
     'debug_toolbar',
@@ -69,25 +69,21 @@ INTERNAL_IPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
-
 ROOT_URLCONF = 'jp2.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            'jp2_react/build',
-            os.path.join(BASE_DIR, 'jp2_react/build'),
-            os.path.join(BASE_DIR, 'jp2_react/public')
-            ],
+        'DIRS': [os.path.join(BASE_DIR, 'jp2_react/build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -95,7 +91,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.media'
             ],
         },
     },
@@ -146,25 +141,26 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-# PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+# URL, pod kterou budou dostupné statické soubory (např. /static/main.asdf.css)
+STATIC_URL = '/static/'
+
+# Adresář, kam `collectstatic` shromáždí VŠECHNY statické soubory pro produkci.
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-#STATIC_URL = '/static/' ### zakomentovat
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
-
+# Seznam adresářů, kde má Django hledat statické soubory z tvých aplikací.
 STATICFILES_DIRS = [
- #   BASE_DIR / 'static',
-    BASE_DIR / 'jp2_react/build/static',
-    # os.path.join(PROJECT_ROOT, 'static'),
+    # Cesta ke statickým souborům Reactu (CSS, JS)
+    os.path.join(BASE_DIR, 'jp2_react/build/static'),
+    # Cesta ke kořenovým souborům Reactu (index.html, favicon.ico, portrait.jpg)
+    os.path.join(BASE_DIR, 'jp2_react/build'),
 ]
 
-print("BASE_DIR", BASE_DIR)
+# Ukládání pro WhiteNoise, které je efektivnější než výchozí.
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',    #causes verbose duplicate notifications in django 1.9
-)
+# MEDIA soubory jsou pro obsah nahraný uživateli, necháme je oddělené
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
